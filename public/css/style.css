@@ -1,0 +1,145 @@
+		/*////////////////////////  MENU    ///////////////////////////////  */
+.navbar-brand{
+	font-size: 1.8em;
+}
+#navbarTogglerDemo03{
+	font-size: 1.3em;
+	background-color: #f8f8f8;
+}
+.nav-link{
+	margin-left: 30px;
+	border-bottom: 2px solid #f8f8f8;
+}
+.nav-link:hover{
+	border-bottom: 2px solid #386473;
+}
+nav{
+	height: 100px;
+}
+
+		/*////////////////////////  TITRES    ///////////////////////////////  */
+h1{
+	padding-top: 50px;
+	padding-bottom: 50px;
+	color: #386473;
+	text-align: center;
+	font-weight: bold;
+}
+em{
+	color: #386473;
+	font-weight: bold;
+}
+h2{
+	text-align: center;
+	color: #386473;
+	background-color: #f8f8f8;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+h3{
+	color: #386473;
+	font-weight: bold;
+}
+
+		/*////////////////////////   PAGE ACCUEIL    ///////////////////////////////  */
+#image-principale{
+	width: 100%;
+	height: auto;
+}
+button{
+	position: relative;
+	left: 44%;
+	background-color: #386473;
+	padding: 8px 10px 10px 10px;
+	border-radius: 4px;
+	border: 3px solid #386473;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	font-size: 0.8em;
+}
+button a,button a:hover {
+	color: white;
+}
+#container-1 p{
+	color: white;
+	text-align: center;
+	font-size: 1.2em;
+	padding-bottom: 30px;
+}	
+#container-1{
+	height: 300px;
+}
+#container-3{
+	background-color: #f8f8f8;
+}
+		/*////////////////////////  PAGE INSCRIPTION   ///////////////////////////////  */
+
+#inscription, #connexion{
+	color: white;
+	background-color: #386473;
+	padding: 8px 10px 10px 10px;
+	border-radius: 4px;
+	border: 3px solid #386473;
+	font-weight: bold;
+	font-size: 0.8em;
+}
+#inscription:hover{
+	text-decoration: underline;
+}
+#connexion:hover{
+	text-decoration: underline;
+}
+		/*////////////////////////  PAGE CHAPITRES   ///////////////////////////////  */
+
+#container-chapitres{
+	background-color: #f8f8f8;
+	margin: 10px;
+}
+
+		/*////////////////////////  PAGE RENSEIGNEMENTS   ///////////////////////////////  */
+#contact{
+	text-align: center;
+}
+.contact1{
+	font-weight: bold;
+	text-decoration: underline;
+}
+.contact2{
+	font-style: italic;:;
+}
+
+		/*////////////////////////  PAGE COMMENTAIRE   ///////////////////////////////  */
+textarea{
+	width: 100%;
+}
+#buttonCommentaire{
+	position: relative;
+	top: 5px;
+	left: 10px;
+}
+.phraseRetourChapitre{
+	text-align: center;
+}
+.ajoutCommentaire{
+	border: 1px solid grey;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+
+		/*////////////////////////  FOOTER    ///////////////////////////////  */
+#pied_de_page{
+	color: black; 
+	text-align: center;
+	margin-top: 20px;
+}
+footer{
+	background-color: #f8f8f8;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border: 1px solid black;
+}
