@@ -12,7 +12,7 @@
 					{
 					?>
 					<div class="col-md-5" id="container-chapitres">
-					    <a href="index.php?chapitre=<?php echo $donnees['id']; ?>">
+					    <a href="index.php?action=pageCommentaires=<?php echo $donnees['id']; ?>">
 					    	<h3>
 					        	<?php echo htmlspecialchars($donnees['titre']); ?>
 					    	</h3>
@@ -25,7 +25,7 @@
 					    echo nl2br(htmlspecialchars($donnees['contenu']));
 					    ?>
 					    <br/>
-					    <em><a href="index.php?action=chapitre=<?php echo $donnees['id']; ?>">Écrire un commentaires</a></em>
+					    <em><a href="index.php?action=pageCommentaires=<?php echo $donnees['id']; ?>">Écrire un commentaires</a></em>
 					    </p>
 					</div>
 					

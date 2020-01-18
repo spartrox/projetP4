@@ -9,7 +9,7 @@
           <div class="container-fluid" id="container-1">
             <h1><em>Billet simple pour l'Alaska </em></h1>
             <p><em>Bienvenue sur le blog de Jean Forteroche</em></p>
-            <button id="boutton1"><a href="index.php?action=affichageRenseignements.php">Cliquez ici pour en savoir plus</a> </button>
+            <button id="boutton1"><a href="index.php?action=pageRenseignements">Cliquez ici pour en savoir plus</a> </button>
           </div>
       </section>
       
