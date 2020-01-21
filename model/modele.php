@@ -36,6 +36,17 @@
         return $comments;
 	}
 
+	function getInscription(){
+
+		// Connexion à la base de données
+		$bdd = bddConnection();
+
+		//Récupération
+
+
+
+	}
+
 
 
 

@@ -67,7 +67,7 @@ if(isset($_POST['formconnexion'])) {
 					echo " <font color='red'>" . $erreur . "</font>";
 				}
 				?>
-				<a href="inscription.php"> Cliquez ici pour créer un compte !</a>
+				<a href="index.php?action=pageInscription"> Cliquez ici pour créer un compte !</a>
 			</div>
 		<?php $content = ob_get_clean(); ?>
 
