@@ -78,7 +78,7 @@ button a,button a:hover {
 }
 		/*////////////////////////  PAGE INSCRIPTION   ///////////////////////////////  */
 
-#inscription, #connexion{
+#inscription, #connexion, #publier{
 	color: white;
 	background-color: #386473;
 	padding: 8px 10px 10px 10px;
@@ -142,4 +142,11 @@ footer{
 	padding-top: 20px;
 	padding-bottom: 20px;
 	border: 1px solid black;
+}
+		/*////////////////////////  AJOUT CHAPITRE    ///////////////////////////////  */
+#ajoutChapitre{
+	width: 50%;
+}
+#myTextarea{
+	height: 150px;
 }

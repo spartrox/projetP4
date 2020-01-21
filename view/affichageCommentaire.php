@@ -36,6 +36,7 @@
             <hr>
                 <h3 align="center">Espace commentaire</h3>
             <hr>
+            
             <form method="POST" action="index.php?action=ajoutCommentaire&id=<?php echo($chapitre);?>">
 
                 <textarea name="commentaire" placeholder="Ajouter votre commentaire"></textarea><br>

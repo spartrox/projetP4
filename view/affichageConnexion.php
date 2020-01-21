@@ -1,4 +1,4 @@
-<!--
+
 <?php
 session_start();
 
@@ -25,7 +25,6 @@ if(isset($_POST['formconnexion'])) {
    }
 }
 ?>
--->
 
 <?php $title = "Blog de Jean Forteroche"; ?>
 

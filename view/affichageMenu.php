@@ -34,11 +34,10 @@
               <a class="nav-link" href="index.php?action=pageDeconnexion">Se deconnecter</a>
             </li>
          
-      <!-- Si une session est ouverte et si c'est un admin alors on affiche le menu admin -->
-  <!-- if si administrateur on affiche le lien vers la partie admin 
-                 <li class="nav-item">
-              <a class="nav-link" href="index.php?action=affichageDeconnexion">Se deconnecter</a>
-          </li> -->
+      <!-- Si une session est ouverte et si c'est un admin alors on affiche le menu admin
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a>
+            </li>  -->
           
       <!-- Sinon on affiche le menu de base -->    
   <?php } else { ?>
@@ -49,6 +48,10 @@
             
             <li class="nav-item">
               <a class="nav-link" href="index.php?action=pageConnexion">Connexion</a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a>
             </li> 
 
   <?php } ?>     

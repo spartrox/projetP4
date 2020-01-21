@@ -32,13 +32,8 @@
 
  	function pageInscription(){
 
- 		$pseudo = htmlspecialchars($_POST['pseudo']);
- 		$pseudolength = strlen($pseudo);
-   		$mail = htmlspecialchars($_POST['mail']);
-   		$mdp = sha1($_POST['mdp']);
-   		$mdp2 = sha1($_POST['mdp2']);
-
-
+ 		$mailexist = getMail();
+ 		$insertmbr = getInscription();
 
  		require('view/affichageInscription.php');
  	}
@@ -59,6 +54,12 @@
 
 
  		require('view/affichageDeconnexion.php');
+ 	}
+
+ 	function pageAjoutChapitre(){
+
+
+ 		require('view/affichageAjoutChapitre.php');
  	}
 
 
