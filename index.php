@@ -20,6 +20,10 @@
  				pageRenseignements();
 
  			} elseif ($_GET['action'] == 'pageInscription'){
+
+ 		     	pageInscription();
+ 			}
+ 			  elseif ($_GET['action'] == 'traitementInscription'){
  				if (isset($_POST['forminscription'])){
  				    $pseudo = htmlspecialchars($_POST['pseudo']);
    					$mail = htmlspecialchars($_POST['mail']);
@@ -31,20 +35,15 @@
 				      
 				        if($pseudolength <= 30) {
 				                    
-				            if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-				               
-				               if($mailexist == 0) {
+				            if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {				           
 				                  
 				                  if($mdp == $mdp2) {
+				                  	 traitementInscription($pseudo, $mail, $mdp);
 				                     $erreur = "Votre compte a bien été créé ! <a href=\"index.php?action=pageConnexion\">Me connecter</a>";
 				                  
 				                  } else {
 				                     $erreur = "Vos mots de passes ne correspondent pas !";
 				                  }
-
-				                } else {
-				                  $erreur = "Adresse mail déjà utilisée !";
-				                }
 
 				            } else {
 				               $erreur = "Votre adresse mail n'est pas valide !";
@@ -58,7 +57,6 @@
 				      $erreur = "Tous les champs doivent être complétés !";
 				    }
 				} 				
-					pageInscription();
 
  			} elseif ($_GET['action'] == 'pageConnexion'){
 				if(isset($_POST['formconnexion'])) {

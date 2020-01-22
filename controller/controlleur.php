@@ -30,10 +30,18 @@
  		require('view/affichageRenseignements.php');
  	}
 
+ 	function traitementInscription($pseudo, $mail, $mdp){
+
+ 		// vérifier si le pseudo est déja présent
+ 		// vérifier si le mail est déja présent
+ 		// hasher le mdp
+
+
+ 	}
  	function pageInscription(){
 
- 		$mailexist = getMail();
- 		$insertmbr = getInscription();
+ 		//$mailexist = getMail();
+ 		//$insertmbr = getInscription();
 
  		require('view/affichageInscription.php');
  	}

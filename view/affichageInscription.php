@@ -5,7 +5,7 @@
       <div align="center">
          <h2>Inscription</h2>
          <br /><br />
-         <form method="POST" action="">
+         <form method="POST" action="index.php?action=traitementInscription">
             <table>
                <tr>
                   <td align="right">
@@ -50,9 +50,9 @@
          </form> <br>
 
          <?php
-            if(isset($erreur)) {
-              echo '<font color="red">'.$erreur."</font>";
-            }
+            //if(isset($erreur)) {
+            //  echo '<font color="red">'.$erreur."</font>";
+            //}
             ?>
 
           <p>Déja un compte ? <a href="index.php?action=pageConnexion">Connectez-vous!</a> </p>

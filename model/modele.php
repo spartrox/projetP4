@@ -55,7 +55,7 @@
 		$bdd = bddConnect();
 
 		//Récupération du pseudo du mail et du mdp
-        $insertmbr = $bdd->prepare("SELECT pseudo, mail, motdepasse) FROM visiteurs VALUES(?, ?, ?)");
+        $insertmbr = $bdd->prepare("SELECT pseudo, mail, motdepasse FROM visiteurs VALUES(?, ?, ?)");
         $insertmbr->execute(array($pseudo, $mail, $mdp));		
 
         return $insertmbr;
