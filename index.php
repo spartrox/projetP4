@@ -39,22 +39,22 @@
 				                  
 				                  if($mdp == $mdp2) {
 				                  	 traitementInscription($pseudo, $mail, $mdp);
-				                     $erreur = "Votre compte a bien été créé ! <a href=\"index.php?action=pageConnexion\">Me connecter</a>";
+				                     throw new Exception("Votre compte a bien été créé ! <a href=\"index.php?action=pageConnexion\">Me connecter</a>");
 				                  
 				                  } else {
-				                     $erreur = "Vos mots de passes ne correspondent pas !";
+				                     throw new Exception("Vos mots de passes ne correspondent pas !");
 				                  }
 
 				            } else {
-				               $erreur = "Votre adresse mail n'est pas valide !";
+				               throw new Exception("Votre adresse mail n'est pas valide !");
 				            }
 
 				        } else {
-				           $erreur = "Votre pseudo ne doit pas dépasser 30 caractères !";
+				           throw new Exception("Votre pseudo ne doit pas dépasser 30 caractères !");
 				        }
 
 				    } else {
-				      $erreur = "Tous les champs doivent être complétés !";
+				      throw new Exception("Tous les champs doivent être complétés !");
 				    }
 				} 				
 
@@ -72,10 +72,10 @@
 				            $_SESSION['mail'] = $userinfo['mail'];
          					header("Location: index.php?action=pageAccueil?id=".$_SESSION['id']);
       					} else {
-         					$erreur = "Mauvais mail ou mot de passe !";
+         					throw new Exception("Mauvais mail ou mot de passe !");
       					}
    					} else {
-      					$erreur = "Tous les champs doivent être complétés !";
+      					throw new Exception("Tous les champs doivent être complétés !");
    					}
 				}
  				pageConnexion();
