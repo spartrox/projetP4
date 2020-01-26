@@ -1,6 +1,7 @@
  <?php
  session_start();
- 	require_once('controller/controlleur.php');
+ 	require_once('controller/frontend.php');
+ 	require_once('controller/backend.php');
 
 	// Début  des tests	
 	try
