@@ -70,6 +70,11 @@
  		require('view/affichageAjoutChapitre.php');
  	}
 
+ 	function error($e){
+
+   		require('view/frontend/affichageMessageErreur.php');
+	}
+
 
 
  	

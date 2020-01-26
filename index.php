@@ -1,6 +1,6 @@
  <?php
- 	require('controller/controlleur.php');
-	
+ session_start();
+ 	require_once('controller/controlleur.php');
 
 	// Début  des tests	
 	try
@@ -97,7 +97,7 @@
   	//Début des Erreur		
 	catch(Exception $e)
 	{
-	    die('Erreur : '.$e->getMessage());
+	    error($e);
 	}
 
  	
