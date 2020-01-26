@@ -27,37 +27,25 @@ if(isset($_POST['formconnexion'])) {
 ?>
 
 <?php $title = "Blog de Jean Forteroche"; ?>
-
+<?php $script=""; ?>
 		<?php ob_start(); ?>	
 			<div align="center">
 				
 				<h2>Connexion</h2>	
 				<br><br>
-				<form  method="POST" action="">
-					<table>
-						<tr>	
-							<td align="right" style="padding-bottom: 8px;">
+				<form  method="POST" action="">	
+							<div class="emailConnexion">
 								<label>Email :</label>
-							</td>
-							<td align="center" style="padding-bottom: 10px;">
 								<input type="email" name="mailconnect" placeholder="Email"> <br>
-							</td>
-						</tr>
-						<tr>
-							<td align="right" >
+							</div>
+							<div id="mdpConnexion">
 								<label>Mot de passe :</label>
-							</td>
-							<td style="padding-top: 0px;">
 								<input type="password" name="mdpconnect" placeholder="Mot de passe">
-							</td>
-						</tr>	
-						<tr>
-							<td></td>
-							<td align="center"><br>
+							</div>
+							<div align="center">
+								<br>
 								<input type="submit" name="formconnexion" value="Se connecter" id="connexion">
-							</td>
-						</tr>
-					</table>
+							</div>
 				</form> <br>
 				
 				<?php

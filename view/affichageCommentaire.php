@@ -17,7 +17,7 @@
 
 
 <?php $title = "Blog de Jean Forteroche"; ?>
-
+<?php $script=""; ?>
     <?php ob_start(); ?>
     <h2>Bonne lecture !</h2>
 

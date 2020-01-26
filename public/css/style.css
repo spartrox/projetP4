@@ -93,6 +93,19 @@ button a,button a:hover {
 #connexion:hover{
 	text-decoration: underline;
 }
+.formulaire{
+	text-align: center;
+}
+.email{
+	margin-right: -12px;
+}
+.mdp{
+	margin-left: -47px;
+}
+.mdp2{
+	margin-right: 168px;
+}
+
 		/*////////////////////////  PAGE CHAPITRES   ///////////////////////////////  */
 
 #container-chapitres{
@@ -130,6 +143,11 @@ textarea{
 	margin-bottom: 10px;
 }
 
+		/*////////////////////////  PAGE CONNEXION    ///////////////////////////////  */
+
+#mdpConnexion{
+	margin-right: 55px;
+}
 
 		/*////////////////////////  FOOTER    ///////////////////////////////  */
 #pied_de_page{
@@ -149,4 +167,26 @@ footer{
 }
 #myTextarea{
 	height: 150px;
+}
+@media screen and (max-width: 650px){
+
+	label{
+		display: none;
+	}
+	.email{
+		margin-top: 5px;
+		margin-right: 0px;
+	}
+	.mdp{
+		margin-top: 5px;
+		margin-left: 0px;
+	}
+	.mdp2{
+		margin-top: 5px;
+		margin-right: 0px;
+	}
+	#mdpConnexion{
+	margin-top: 5px;
+	margin-left: 55px;
+}
 }

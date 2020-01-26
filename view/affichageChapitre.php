@@ -1,6 +1,6 @@
 
 <?php $title = "Blog de Jean Forteroche"; ?>
-
+<?php $script=""; ?>
 		<?php ob_start(); ?>
 		<h2>Liste de tous les chapitres publiés</h2>
 		<section>
