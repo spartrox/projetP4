@@ -23,13 +23,13 @@
 
         <div class="container">
             <h3 align="center">
-                <?php echo htmlspecialchars($donnees['titre']); ?>
+                <?= htmlspecialchars($posts['titre']); ?>
             </h3>
                 
             <p>
-                <?php echo nl2br(htmlspecialchars($donnees['contenu'])); ?>
+                <?= nl2br($posts['contenu']); ?>
              </p>
-                <em >publié le <?php echo $donnees['date_creation_fr']; ?></em>
+                <em >publié le <?= $posts['date_creation_fr']; ?></em>
         </div><br><br>
             
         <div>        
@@ -59,6 +59,6 @@
                <p class="phraseRetourChapitre"><a href="index.php">Retour à la liste des chapitres</a></p>
             </div>
 
-<?php $content = ob_get_clean(); ?>
+    <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php') ?>

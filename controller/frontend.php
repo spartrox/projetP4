@@ -12,7 +12,8 @@
 
  	function listeChapitres(){
 
- 		 	$req = getChapitres();
+ 		 	$postManager = new PostManager(); //Création d'un objet
+ 		 	$posts = $postManager->getChapitres();
 
 			require('view/frontend/affichageChapitre.php');
  	}

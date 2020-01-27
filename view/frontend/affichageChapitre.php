@@ -8,7 +8,7 @@
 		        <div class="row ">
 		          		         
 		        	<?php
-					while ($donnees = $req->fetch())
+					while ($donnees = $posts->fetch())
 					{
 					?>
 					<div class="col-md-5" id="container-chapitres">
@@ -26,11 +26,11 @@
 					    <em><a href="index.php?action=pageCommentaires=<?php echo $donnees['id']; ?>">Écrire un commentaires</a></em>
 					    </p>
 					</div>
-					
+
 					<!-- // Fin de la boucle des chapitres -->
 					<?php
 					} 
-					$req->closeCursor();
+					$posts->closeCursor();
 					?>
 		        </div>  
 		      </div>
