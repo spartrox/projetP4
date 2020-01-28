@@ -5,7 +5,7 @@
       <div class="formulaire">
          <h2>Inscription</h2>
          <br /><br />
-         <form method="POST" action="index.php?action=traitementInscription">
+         <form  action="index.php?action=addMember" method="post">
                   <div>
                      <label class="nom" for="pseudo">Pseudo :</label>
                      <input type="text" placeholder="Votre pseudo" id="pseudo" name="pseudo" value="<?php if(isset($pseudo)) { echo $pseudo; } ?>" />

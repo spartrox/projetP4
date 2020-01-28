@@ -10,7 +10,7 @@
                 
             <p>
                 <?= nl2br($post['contenu']); ?>
-             </p>
+            </p>
                 <em >publié le <?= $post['date_creation_fr']; ?></em>
         </div><br><br>
             

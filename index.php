@@ -11,111 +11,87 @@
 		if (isset($_POST['login'])){
 			login();
 		}
-		if (isset($_GET["action"])) 
-		{
- 			if ($_GET['action'] == 'listeChapitres'){
- 			listeChapitres();
+			if (isset($_GET["action"])){
+	 			if ($_GET['action'] == 'listeChapitres'){
+	 				listeChapitres();
 
- 			} elseif ($_GET['action'] == 'post'){
+	 			} elseif ($_GET['action'] == 'post'){
 
- 				if(isset($_GET['id']) && $_GET['id'] > 0){
- 				post();
- 				
- 			} else {
-                throw new Exception('Aucun identifiant de billet envoyé');
-            } 
- 			
- 			} elseif ($_GET['action'] == 'addComment'){
- 				if (isset($_GET['id']) && $_GET['id'] > 0){
- 					if (!empty($_POST['commentaire'])){
- 						addComment($_GET['id'], $_POST['pseudo'], $_POST['commentaire']);
+	 				if(isset($_GET['id']) && $_GET['id'] > 0){
+	 				post();
+	 				
+	 				} else {
+	                		throw new Exception('Aucun identifiant de billet envoyé');
+	            	} 
+	 			
+	 			} elseif ($_GET['action'] == 'addComment'){
+	 					if (isset($_GET['id']) && $_GET['id'] > 0){
+	 						if (!empty($_POST['commentaire'])){
+	 							addComment($_GET['id'], $_POST['pseudo'], $_POST['commentaire']);
 
- 						} else{
- 							throw new Exception(" Veuillez entrer un commentaire !");
- 						}
- 					
- 					} else{
- 						throw new Exception("Aucun identifiant de billet envoyé");		
- 					}
+	 						} else{
+	 							   throw new Exception(" Veuillez entrer un commentaire !");
+	 						}
 
- 			} elseif ($_GET['action'] == 'pageRenseignements'){
- 				pageRenseignements();
+	 					} else{
+	 						   throw new Exception("Aucun identifiant de billet envoyé");		
+	 					}
 
- 			} elseif ($_GET['action'] == 'pageInscription'){
+	 			} elseif ($_GET['action'] == 'pageRenseignements'){
+	 				pageRenseignements();
 
- 		     	pageInscription();
- 			}
- 			  elseif ($_GET['action'] == 'traitementInscription'){
- 				if (isset($_POST['forminscription'])){
- 				    $pseudo = htmlspecialchars($_POST['pseudo']);
-   					$mail = htmlspecialchars($_POST['mail']);
-   					$mdp = sha1($_POST['mdp']);
-   					$mdp2 = sha1($_POST['mdp2']);
+	 			} elseif ($_GET['action'] == 'pageInscription'){
+	 				pageInscription();
 
-				    if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
-				       $pseudolength = strlen($pseudo);
-				      
-				        if($pseudolength <= 30) {
-				                    
-				            if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {				           
-				                  
-				                  if($mdp == $mdp2) {
-				                  	 traitementInscription($pseudo, $mail, $mdp);
-				                     throw new Exception("Votre compte a bien été créé ! <a href=\"index.php?action=pageConnexion\">Me connecter</a>");
-				                  
-				                  } else {
-				                     throw new Exception("Vos mots de passes ne correspondent pas !");
-				                  }
+	 			} elseif ($_GET['action'] == 'pageDeconnexion'){
+	 				pageDeconnexion();
 
-				            } else {
-				               throw new Exception("Votre adresse mail n'est pas valide !");
-				            }
+	 			} elseif ($_GET['action'] == 'pageAjoutChapitre'){
+	 				pageAjoutChapitre();
+	 			
+	 			} elseif ($_GET['action'] == 'addMember'){
+						if (!empty($_POST['pseudo']) && !empty($_POST['mdp']) && !empty($_POST['mdp2']) && !empty($_POST['mail'])){
+							if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
+								if ($_POST['mdp'] == $_POST['mdp2']){
+									addMember(strip_tags($_POST['pseudo']), strip_tags($_POST['mdp']), strip_tags($_POST['mail']));
+								}
+								else {
+									  throw new Exception('Les deux mots de passe ne correspondent pas.');
+								}
+							} else {
+									throw new Exception('Pas d\'adresse mail valide.');
+								}
+						} else {
+								throw new Exception('Tous les champs ne sont pas remplis !');
+						} 					
 
-				        } else {
-				           throw new Exception("Votre pseudo ne doit pas dépasser 30 caractères !");
-				        }
+	 			} elseif ($_GET['action'] == 'pageConnexion'){
+						if(isset($_POST['pseudo'])){
+			   					if(!empty($pseudoConnect) AND !empty($mdpConnect)){
+			      					if($userexist == 1){
+			         					$userinfo = $requser->fetch();
+							            $_SESSION['id'] = $userinfo['id'];
+							            $_SESSION['pseudo'] = $userinfo['pseudo'];
+							            $_SESSION['mail'] = $userinfo['mail'];
+			         					header("Location: index.php?action=pageAccueil?id=".$_SESSION['id']);
 
-				    } else {
-				      throw new Exception("Tous les champs doivent être complétés !");
-				    }
-				} 				
+			      					} else {
+			         						throw new Exception("Mauvais mail ou mot de passe !");
+			      					}
 
- 			} elseif ($_GET['action'] == 'pageConnexion'){
-				if(isset($_POST['formconnexion'])) {
-   					$mailconnect = htmlspecialchars($_POST['mailconnect']);
-   					$mdpconnect = sha1($_POST['mdpconnect']);
-   
-   					if(!empty($mailconnect) AND !empty($mdpconnect)){
+			   					} else {
+	      								throw new Exception("Tous les champs doivent être complétés !");
+	   							}
+						}
+	 				pageConnexion();
+	 			} 
 
-      					if($userexist == 1) {
-         					$userinfo = $requser->fetch();
-				            $_SESSION['id'] = $userinfo['id'];
-				            $_SESSION['pseudo'] = $userinfo['pseudo'];
-				            $_SESSION['mail'] = $userinfo['mail'];
-         					header("Location: index.php?action=pageAccueil?id=".$_SESSION['id']);
-      					} else {
-         					throw new Exception("Mauvais mail ou mot de passe !");
-      					}
-   					} else {
-      					throw new Exception("Tous les champs doivent être complétés !");
-   					}
-				}
- 				pageConnexion();
-
- 			} elseif ($_GET['action'] == 'pageDeconnexion'){
- 				pageDeconnexion();
-
- 			} elseif ($_GET['action'] == 'pageAjoutChapitre'){
- 				pageAjoutChapitre();
- 			}
-		} 
-		else{
- 			pageAccueil();
-		}
+			} else{
+	 			pageAccueil();
+			}
 	} 
 	// Fin des tests
    	
-
   	//Début des Erreur		
 	catch(Exception $e)
 	{

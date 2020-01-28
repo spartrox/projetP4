@@ -3,6 +3,7 @@
  	//Chargement des différents classes
  	require_once('model/PostManager.php');
 	require_once('model/CommentManager.php');
+  require_once('model/MemberManager.php');
 
  	//Création des différentes fonction
  	function pageAccueil(){
@@ -32,7 +33,6 @@
 	function addComment($id_utilisateur, $contenu, $id_chapitre){
 
     	$commentManager = new CommentManager();
-
     	$affectedLines = $commentManager->postComment($id_utilisateur, $contenu, $id_chapitre);
 
     	if ($affectedLines === false) {
@@ -41,55 +41,62 @@
    		} else {
         header('Location: index.php?action=post&id=' . $postId);
     }
-}
+  }
 
+  function pageInscription(){
 
+    require('view/frontend/affichageInscription.php');
+  }
 
+ 	function addMember($pseudo, $mail, $mdp){
 
- 	function pageRenseignements(){
+ 	  $memberManager = new MemberManager();
+    
+    $pseudoExist = $memberManager->checkPseudo($pseudo);
+    $mailExist = $memberManager->checkMail($mail);
+      
+      if ($pseudoExist){
+          throw new Exception('Pseudo déja utilisé, veuillez en trouver un autre !');
+      }
 
- 		require('view/frontend/affichageRenseignements.php');
+      if ($mailExist){
+          throw new Exception('Adresse mail déja utilisé, veuillez en trouver une autre !');
+      }
+
+        if (!empty($pseudoExist) && !empty($mailExist)){
+
+            $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+            $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
+
+            //Redirection vers la page d'accueil
+            header('Location: index.php?action=pageAccueil');
+        }
  	}
 
- 	function traitementInscription($pseudo, $mail, $mdp){
+  function pageRenseignements(){
 
- 		// vérifier si le pseudo est déja présent
- 		// vérifier si le mail est déja présent
- 		// hasher le mdp
-
-
- 	}
- 	function pageInscription(){
-
- 		//$mailexist = getMail();
- 		//$insertmbr = getInscription();
-
- 		require('view/frontend/affichageInscription.php');
- 	}
+    require('view/frontend/affichageRenseignements.php');
+  }
 
  	function pageConnexion(){
-
 
  		require('view/frontend/affichageConnexion.php');
  	}
 
  	function pageProfil(){
 
-
  		require('view/frontend/affichageProfil.php');
- 	}
-
- 	function pageDeconnexion(){
-
-
- 		require('view/frontend/affichageDeconnexion.php');
  	}
 
  	function pageAjoutChapitre(){
 
-
  		require('view/backend/affichageAjoutChapitre.php');
  	}
+
+    function pageDeconnexion(){
+
+    require('view/frontend/affichageDeconnexion.php');
+  }
 
  	function error($e){
 
