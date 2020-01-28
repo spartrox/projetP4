@@ -8,22 +8,22 @@
 		        <div class="row ">
 		          		         
 		        	<?php
-					while ($donnees = $posts->fetch())
+					while ($data = $posts->fetch())
 					{
 					?>
 					<div class="col-md-5" id="container-chapitres">
-					    <a href="index.php?action=pageCommentaires=<?php echo $donnees['id']; ?>">
+					    <a href="index.php?action=post&amp;id=<?= $data['id']; ?>">
 					    	<h3>
-					        	<?php echo htmlspecialchars($donnees['titre']); ?>
+					        	<?php echo htmlspecialchars($data['titre']); ?>
 					    	</h3>
 					    </a>
-					       <em>le <?php echo $donnees['date_creation_fr']; ?></em>
+					       <em>le <?php echo $data['date_creation_fr']; ?></em>
 					    <p>	
 
 					    <!-- // On affiche le contenu des chapitres -->
-					    <?php echo nl2br(htmlspecialchars($donnees['contenu'])); ?>
+					    <?php echo nl2br(htmlspecialchars($data['contenu'])); ?>
 					    <br/>
-					    <em><a href="index.php?action=pageCommentaires=<?php echo $donnees['id']; ?>">Écrire un commentaires</a></em>
+					    <em><a href="index.php?action=post&amp;id=<?= $data['id']; ?>">Écrire un commentaires</a></em>
 					    </p>
 					</div>
 

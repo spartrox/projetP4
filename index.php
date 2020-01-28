@@ -1,22 +1,43 @@
  <?php
  session_start();
+
+ 	//Récupértion des fichiers nécessaire
  	require_once('controller/frontend.php');
  	require_once('controller/backend.php');
 
 	// Début  des tests	
 	try
 	{
+		if (isset($_POST['login'])){
+			login();
+		}
 		if (isset($_GET["action"])) 
 		{
  			if ($_GET['action'] == 'listeChapitres'){
  			listeChapitres();
 
- 			} elseif ($_GET['action'] == 'pageCommentaires'){
+ 			} elseif ($_GET['action'] == 'post'){
 
  				if(isset($_GET['id']) && $_GET['id'] > 0){
- 				pageCommentaires();
- 			}
+ 				post();
+ 				
+ 			} else {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            } 
  			
+ 			} elseif ($_GET['action'] == 'addComment'){
+ 				if (isset($_GET['id']) && $_GET['id'] > 0){
+ 					if (!empty($_POST['commentaire'])){
+ 						addComment($_GET['id'], $_POST['pseudo'], $_POST['commentaire']);
+
+ 						} else{
+ 							throw new Exception(" Veuillez entrer un commentaire !");
+ 						}
+ 					
+ 					} else{
+ 						throw new Exception("Aucun identifiant de billet envoyé");		
+ 					}
+
  			} elseif ($_GET['action'] == 'pageRenseignements'){
  				pageRenseignements();
 

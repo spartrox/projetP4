@@ -1,7 +1,7 @@
 
     <?php
 
-        if(isset($_SESSION['id'])){
+       /* if(isset($_SESSION['id'])){
 
             $pseudo = htmlspecialchars($_SESSION['id']);
 
@@ -11,7 +11,7 @@
         if(isset($_GET['chapitre']) AND !empty($_GET['chapitre'])) {
 
             $chapitre = htmlspecialchars($_GET['chapitre']);
-        }
+        }*/
         
         ?>
 
@@ -23,13 +23,13 @@
 
         <div class="container">
             <h3 align="center">
-                <?= htmlspecialchars($posts['titre']); ?>
+                <?= htmlspecialchars($post['titre']); ?>
             </h3>
                 
             <p>
-                <?= nl2br($posts['contenu']); ?>
+                <?= nl2br($post['contenu']); ?>
              </p>
-                <em >publié le <?= $posts['date_creation_fr']; ?></em>
+                <em >publié le <?= $post['date_creation_fr']; ?></em>
         </div><br><br>
             
         <div>        
@@ -37,7 +37,7 @@
                 <h3 align="center">Espace commentaire</h3>
             <hr>
             
-            <form method="POST" action="index.php?action=ajoutCommentaire&id=<?php echo($chapitre);?>">
+            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
 
                 <textarea name="commentaire" placeholder="Ajouter votre commentaire"></textarea><br>
                     <input id="buttonCommentaire" type="submit" value="Poster mon commentaire" name="submit_commentaire">
@@ -46,17 +46,20 @@
         </div><br><br>
 
             <!-- Affichage des commentaires -->
-            <?php while($c = $comments->fetch()) { ?>
+            <?php 
+            while($c = $comments->fetch())
+            { ?>
 
             <article class="ajoutCommentaire  container">    
-                <p> <b><?= $c['id_utilisateur'] ?></b></p> <hr>
-
-                <p> <?= $c['contenu'] ?> <br></p>
+                <p> <b><?= htmlspecialchars($c['pseudo']) ?></b></p> <hr>
+                <p> <?= htmlspecialchars($c['contenu']) ?><br></p>
             </article>    
-                <?php } ?> 
+            
+            <?php 
+            } ?> 
 
             <div>
-               <p class="phraseRetourChapitre"><a href="index.php">Retour à la liste des chapitres</a></p>
+               <p class="phraseRetourChapitre"><a href="index.php?action=listeChapitres">Retour à la liste des chapitres</a></p>
             </div>
 
     <?php $content = ob_get_clean(); ?>

@@ -18,13 +18,33 @@
 			require('view/frontend/affichageChapitre.php');
  	}
 
- 	function pageCommentaires(){
+ 	function post(){
 
- 		$donnees = getChapitre($_GET['id']);
- 		$comments = getCommentaires($_GET['id']);
+ 		$postManager = new PostManager();
+ 		$commentManager = new CommentManager();
+
+ 		$post = $postManager->getChapitre($_GET['id']);
+ 		$comments = $commentManager->getComments($_GET['id']);
 
  		require('view/frontend/affichageCommentaire.php');
  	}
+
+	function addComment($id_utilisateur, $contenu, $id_chapitre){
+
+    	$commentManager = new CommentManager();
+
+    	$affectedLines = $commentManager->postComment($pseudo, $commentaire, $chapitre);
+
+    	if ($affectedLines === false) {
+        	throw new Exception('Impossible d\'ajouter le commentaire !');
+   		
+   		} else {
+        header('Location: index.php?action=post&id=' . $postId);
+    }
+}
+
+
+
 
  	function pageRenseignements(){
 
