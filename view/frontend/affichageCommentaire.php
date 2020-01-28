@@ -1,21 +1,3 @@
-
-    <?php
-
-       /* if(isset($_SESSION['id'])){
-
-            $pseudo = htmlspecialchars($_SESSION['id']);
-
-
-        }
-
-        if(isset($_GET['chapitre']) AND !empty($_GET['chapitre'])) {
-
-            $chapitre = htmlspecialchars($_GET['chapitre']);
-        }*/
-        
-        ?>
-
-
 <?php $title = "Blog de Jean Forteroche"; ?>
 <?php $script=""; ?>
     <?php ob_start(); ?>
@@ -32,7 +14,10 @@
                 <em >publié le <?= $post['date_creation_fr']; ?></em>
         </div><br><br>
             
-        <div>        
+        <div>
+            <div>
+               <p class="phraseRetourChapitre"><a href="index.php?action=listeChapitres">Retour à la liste des chapitres</a></p>
+            </div>        
             <hr>
                 <h3 align="center">Espace commentaire</h3>
             <hr>
@@ -50,18 +35,13 @@
             while($c = $comments->fetch())
             { ?>
 
-            <article class="ajoutCommentaire  container">    
-                <p> <b><?= htmlspecialchars($c['pseudo']) ?></b></p> <hr>
-                <p> <?= htmlspecialchars($c['contenu']) ?><br></p>
+            <article class="ajoutCommentaire container">    
+                <p><b><?= htmlspecialchars($c['id_utilisateur']) ?></b> le <?=$c['comment_date_fr'] ?></p> <hr>
+                <p><?= nl2br(htmlspecialchars($c['contenu'])) ?><br></p>
             </article>    
             
             <?php 
             } ?> 
 
-            <div>
-               <p class="phraseRetourChapitre"><a href="index.php?action=listeChapitres">Retour à la liste des chapitres</a></p>
-            </div>
-
     <?php $content = ob_get_clean(); ?>
-
 <?php require('template.php') ?>

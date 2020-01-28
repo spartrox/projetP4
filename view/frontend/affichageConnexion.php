@@ -32,10 +32,10 @@ if(isset($_POST['formconnexion'])) {
 				
 				<h2>Connexion</h2>	
 				<br><br>
-				<form  method="POST" action="">	
+				<form action="index.php?action=pageAccueil&amp;id=<?php//$_SESSION['id'] ?>" method="post">	
 							<div class="emailConnexion">
-								<label>Email :</label>
-								<input type="email" name="mailconnect" placeholder="Email"> <br>
+								<label>Pseudo :</label>
+								<input type="text" name="pseudoconnect" placeholder="Pseudo"> <br>
 							</div>
 							<div id="mdpConnexion">
 								<label>Mot de passe :</label>
@@ -47,12 +47,6 @@ if(isset($_POST['formconnexion'])) {
 							</div>
 				</form> <br>
 				
-				<?php
-				if (isset($erreur))
-				{
-					echo " <font color='red'>" . $erreur . "</font>";
-				}
-				?>
 				<a href="index.php?action=pageInscription"> Cliquez ici pour créer un compte !</a>
 			</div>
 		<?php $content = ob_get_clean(); ?>

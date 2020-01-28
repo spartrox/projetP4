@@ -146,7 +146,7 @@ textarea{
 		/*////////////////////////  PAGE CONNEXION    ///////////////////////////////  */
 
 #mdpConnexion{
-	margin-right: 55px;
+	margin-right: 42px;
 }
 
 		/*////////////////////////  FOOTER    ///////////////////////////////  */
@@ -187,6 +187,6 @@ footer{
 	}
 	#mdpConnexion{
 	margin-top: 5px;
-	margin-left: 55px;
+	margin-left: 42px;
 }
 }

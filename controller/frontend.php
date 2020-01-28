@@ -33,7 +33,7 @@
 
     	$commentManager = new CommentManager();
 
-    	$affectedLines = $commentManager->postComment($pseudo, $commentaire, $chapitre);
+    	$affectedLines = $commentManager->postComment($id_utilisateur, $contenu, $id_chapitre);
 
     	if ($affectedLines === false) {
         	throw new Exception('Impossible d\'ajouter le commentaire !');
