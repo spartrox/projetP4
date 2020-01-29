@@ -1,24 +1,3 @@
-
-<?php
-
-if(isset($_POST['formconnexion'])) {
-
-      $requser = $bdd->prepare("SELECT * FROM visiteurs WHERE pseudo = ? AND motdepasse = ?");
-      $requser->execute(array($mailconnect, $mdpConnect));
-      $userexist = $requser->rowCount();
-      if($userexist == 1) {
-         $userinfo = $requser->fetch();
-         $_SESSION['id'] = $userinfo['id'];
-         $_SESSION['pseudo'] = $userinfo['pseudo'];
-         $_SESSION['mail'] = $userinfo['mail'];
-      } else {
-         $erreur = "Mauvais mail ou mot de passe !";
-      }
-   } else {
-      $erreur = "Tous les champs doivent être complétés !";
-   }
-?>
-
 <?php $title = "Blog de Jean Forteroche"; ?>
 <?php $script=""; ?>
 		<?php ob_start(); ?>	
@@ -26,7 +5,7 @@ if(isset($_POST['formconnexion'])) {
 				
 				<h2>Connexion</h2>	
 				<br><br>
-				<form action="index.php?action=pageAccueil" method="post">	
+				<form action="index.php?action=pageConnexionSubmit" method="post">	
 							<div class="emailConnexion">
 								<label>Pseudo :</label>
 								<input type="text" name="pseudoconnect" placeholder="Pseudo"> <br>

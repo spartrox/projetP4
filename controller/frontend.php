@@ -11,6 +11,36 @@
  		require('view/frontend/affichageAccueil.php');
  	}
 
+  function pageInscription(){
+
+    require('view/frontend/affichageInscription.php');
+  }
+
+  function pageRenseignements(){
+
+    require('view/frontend/affichageRenseignements.php');
+  }
+
+  function pageConnexion(){
+
+    require('view/frontend/affichageConnexion.php');
+  }
+
+  function pageProfil(){
+
+    require('view/frontend/affichageProfil.php');
+  }
+
+  function pageAjoutChapitre(){
+
+    require('view/backend/affichageAjoutChapitre.php');
+  }
+
+    function pageDeconnexion(){
+
+    require('view/frontend/affichageDeconnexion.php');
+  }
+
  	function listeChapitres(){
 
  		 	$postManager = new PostManager(); //Création d'un objet
@@ -19,6 +49,7 @@
 			require('view/frontend/affichageChapitre.php');
  	}
 
+  //Chapitre
  	function post(){
 
  		$postManager = new PostManager();
@@ -30,6 +61,7 @@
  		require('view/frontend/affichageCommentaire.php');
  	}
 
+  //Ajout commentaire
 	function addComment($id_utilisateur, $contenu, $id_chapitre){
 
     	$commentManager = new CommentManager();
@@ -43,11 +75,7 @@
     }
   }
 
-  function pageInscription(){
-
-    require('view/frontend/affichageInscription.php');
-  }
-
+  //Ajout membres
  	function addMember($pseudo, $mail, $mdp){
 
  	  $memberManager = new MemberManager();
@@ -67,37 +95,35 @@
 
             $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
             $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
-
+        }
             //Redirection vers la page d'accueil
             header('Location: index.php?action=pageAccueil');
-        }
  	}
 
-  function pageRenseignements(){
+  //Bouton page connexion
+  function pageConnexionSubmit($pseudo, $mdp){
 
-    require('view/frontend/affichageRenseignements.php');
+    $memberManager = new MemberManager();
+
+    $member = $memberManager->loginMember($pseudo);
+    $mdpCorrect = password_verify($_POST['mdpConnect'], $member['motdepasse']);
+
+    if (!empty($member)){
+          throw new Exception("Mauvais identifiant ou mot de passe !");
+      }
+        else {
+            if ($mdpCorrect){
+              $_SESSION['id'] = $member['id'];
+              $_SESSION['pseudo'] = $pseudo['pseudo'];
+              header('Location: index.php');
+            }
+              else {
+                throw new Exception("Mauvais identifiant ou mot de passe !");
+              }
+            }
   }
 
- 	function pageConnexion(){
-
- 		require('view/frontend/affichageConnexion.php');
- 	}
-
- 	function pageProfil(){
-
- 		require('view/frontend/affichageProfil.php');
- 	}
-
- 	function pageAjoutChapitre(){
-
- 		require('view/backend/affichageAjoutChapitre.php');
- 	}
-
-    function pageDeconnexion(){
-
-    require('view/frontend/affichageDeconnexion.php');
-  }
-
+  //Affichage des erreurs
  	function error($e){
 
    		require('view/frontend/affichageMessageErreur.php');
