@@ -21,7 +21,10 @@
 	                		throw new Exception('Aucun identifiant de billet envoyé');
 	            	} 
 	 			
-	 			}  elseif ($_GET['action'] == 'pageRenseignements'){
+	 			}  elseif ($_GET['action'] == 'pageAccueil'){
+	 				pageAccueil();
+	 		
+	 		    }  elseif ($_GET['action'] == 'pageRenseignements'){
 	 				pageRenseignements();
 
 	 			} elseif ($_GET['action'] == 'pageInscription'){
@@ -48,6 +51,7 @@
 
 	 		    } elseif ($_GET['action'] == 'addMember'){
 						if (!empty($_POST['pseudo']) && !empty($_POST['mdp']) && !empty($_POST['mdp2']) && !empty($_POST['mail'])){
+							//die(var_dump($_POST['pseudo'], $_POST['mdp'], $_POST['mdp2'], $_POST['mail']));
 							if (filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
 								if ($_POST['mdp'] == $_POST['mdp2']){
 									addMember($_POST['pseudo'], $_POST['mdp'], $_POST['mail']);

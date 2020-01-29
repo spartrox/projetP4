@@ -9,7 +9,7 @@ require_once('model/manager.php');
     	// Connexion à la base de données
         $bdd = $this->bddConnect();
 
-        $req = $bdd->prepare('SELECT id, pseudo, motdepasse FROM visiteurs WHERE pseudo = ?');
+        $req = $bdd->prepare('SELECT id, pseudo, motdepasse, admin FROM visiteurs WHERE pseudo = ?');
         $req->execute(array($pseudo));
         $member = $req->fetch();
 
@@ -46,7 +46,7 @@ require_once('model/manager.php');
 	public function createMember($pseudo, $mail, $mdp){
 
 		// Connexion à la base de données
-		$bdd = bddConnect();
+		$bdd = $this->bddConnect();
 
         $newMember = $bdd->prepare("INSERT INTO  visiteurs(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
         $newMember->execute(array($pseudo, $mail, $mdp));		
@@ -58,7 +58,7 @@ require_once('model/manager.php');
 	public function getMembers(){
 
 		// Connexion à la base de données
-		$bdd = bddConnect();
+		$bdd = $this->bddConnect();
 
 		$members = $bdd->query('SELECT id, pseudo FROM visiteurs ORDER BY id');
 

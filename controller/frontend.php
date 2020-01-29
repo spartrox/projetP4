@@ -76,13 +76,12 @@
   }
 
   //Ajout membres
- 	function addMember($pseudo, $mail, $mdp){
+ 	function addMember($pseudo, $mdp, $mail){
 
  	  $memberManager = new MemberManager();
     
     $pseudoExist = $memberManager->checkPseudo($pseudo);
-    $mailExist = $memberManager->checkMail($mail);
-      
+    $mailExist = $memberManager->checkMail($mail);  
       if ($pseudoExist){
           throw new Exception('Pseudo déja utilisé, veuillez en trouver un autre !');
       }
@@ -91,7 +90,7 @@
           throw new Exception('Adresse mail déja utilisé, veuillez en trouver une autre !');
       }
 
-        if (!empty($pseudoExist) && !empty($mailExist)){
+        if (!($pseudoExist) && !($mailExist)){
 
             $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
             $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
@@ -108,17 +107,18 @@
     $member = $memberManager->loginMember($pseudo);
     $mdpCorrect = password_verify($_POST['mdpConnect'], $member['motdepasse']);
 
-    if (!empty($member)){
-          throw new Exception("Mauvais identifiant ou mot de passe !");
+    if (!isset($member['id'])){
+          throw new Exception("Mauvais identifiant !");
       }
         else {
             if ($mdpCorrect){
               $_SESSION['id'] = $member['id'];
-              $_SESSION['pseudo'] = $pseudo['pseudo'];
+              $_SESSION['pseudo'] = $member['pseudo'];
+              $_SESSION['admin'] = $member['admin'];
               header('Location: index.php');
             }
               else {
-                throw new Exception("Mauvais identifiant ou mot de passe !");
+                throw new Exception("Mauvais mot de passe !");
               }
             }
   }
