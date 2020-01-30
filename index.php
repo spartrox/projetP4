@@ -75,9 +75,9 @@
 	 			} elseif ($_GET['action'] == 'pageConnexionSubmit'){
 					pageConnexionSubmit($_POST['pseudoconnect'], $_POST['mdpConnect']);
 				
-				} elseif ($_GET['action'] == 'addChapitre') {
-						if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
-							newPost($_POST['titre'], $_POST['contenu']);
+				} elseif ($_GET['action'] == 'addChapitre'){
+						if (!empty($_POST['titreChapitre']) && !empty($_POST['contenu'])){
+							newChapitre($_POST['titreChapitre'], $_POST['contenu']);
 						} 
 						else {
 							  throw new Exception('Le titre ou le contenu est vide !');

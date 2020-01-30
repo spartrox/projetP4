@@ -27,14 +27,14 @@ class PostManager extends Manager{
 
         return $post;
 	}
-	public function createPost($title, $content) {
+	public function createPost($titre, $contenu){
     	
     	// Connexion à la base de données
         $bdd = $this->bddConnect();
 
         // Création du nouveau chapitre
-        $req = $bdd->prepare('INSERT INTO chapitre(titre, contenu, date_creation, update_date) VALUES (?, ?, NOW(), NOW())');
-        $newPost = $req->execute(array($title, $content));
+        $req = $bdd->prepare('INSERT INTO chapitre(titre, contenu, date_creation) VALUES (?, ?, NOW())');
+        $newChapitre = $req->execute(array($titre, $contenu));
 
         return $newChapitre;
     }

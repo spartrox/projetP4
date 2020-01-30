@@ -6,10 +6,10 @@
 	require_once('model/PostManager.php');
 
 	
-	function newPost($titre, $contenu) {
+	function newChapitre($titre, $contenu) {
 		$postManager = new PostManager();
 
-		$newPost = $postManager->createPost($titre, $contenu);
+		$newChapitre = $postManager->createPost($titre, $contenu);
 
 		Header('Location: index.php?action=addChapitre');
 }

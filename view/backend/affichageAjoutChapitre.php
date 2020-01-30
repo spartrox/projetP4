@@ -18,9 +18,9 @@
     <h2>Publication d'un chapitre</h2>
 	    <div class="container-fluid" id="ajoutChapitre">
 	    	<form action="index.php?action=addChapitre"  method="post">
-		        <label for="titre">Titre :</label>
-		        <input class="titreChapitre" type="text" placeholder="Titre du chapitre" name="titre" />
-		        <textarea name="contenu " id="myTextarea" placeholder="Écriver votre chapitre"></textarea>
+		        <label for="titreChapitre">Titre :</label>
+		        <input class="titrechapitre" type="text" placeholder="Titre du chapitre" name="titreChapitre" />
+		        <textarea name="contenu" id="myTextarea" placeholder="Écriver votre chapitre"></textarea>
 		        <input class="chapitreSubmit" type="submit" name="publication" value="Publier le chapitre" id="publier" />    	
 			</form>    
 		</div>
