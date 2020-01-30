@@ -16,14 +16,14 @@ class CommentManager extends Manager{
         return $comments;
 	}
 
-    public function postComment($pseudo, $commentaire, $chapitre){
+    public function postComment($postId){
 
     	//Connexion à la base de données
         $bdd = $this->bddConnect();
         
         // Insertion des commentaires
-        $comments = $bdd->prepare('INSERT INTO commentaire(id_utilisateur, contenu, id_chapitre, comment_date) VALUES(?, ?, ?, NOW())');
-        $affectedLines = $comments->execute(array($pseudo, $commentaire, $chapitre));
+        $comments = $bdd->prepare('SELECT visiteurs.pseudo, commentaire.contenu, commentaire.id_chapitre FROM commentaire INNER JOIN visiteurs ON visiteurs.id = commentaire.id_utilisateur ');
+        $affectedLines = $comments->execute(array($postId));
 
         return $affectedLines;
     }

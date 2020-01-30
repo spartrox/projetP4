@@ -16,33 +16,14 @@
     	<!-- Création d'un nouveau chapitre -->
     <?php ob_start(); ?>
     <h2>Publication d'un chapitre</h2>
-    <form method="POST" action="">
-	    <table class="container-fluid" id="ajoutChapitre">
-	        <tr>
-	            <td align="right">
-	                <label for="Sujet">Titre :</label>
-	            </td>
-	            <td style="padding-bottom: 10px; padding-top: 10px;">
-	                <input type="text" placeholder="Titre du chapitre"  name="sujet" />
-	            </td>
-	        </tr>
-	        <tr>
-	        <tr>
-	            <td align="right">
-	                <label for="Sujet">Chapitre :</label>
-	            </td>
-	        	<td style="padding-bottom: 10px;">
-	        	    <textarea id="myTextarea" placeholder="Écriver votre chapitre"></textarea>
-	        	</td>
-	        </tr>
-			<tr>
-	            <td></td>
-	            <td align="center">
-	                <input type="submit" name="publication" value="Publier le chapitre" id="publier" />
-	            </td>
-	        </tr>        	
-	    </table>
-	</form>    
-	<?php $content = ob_get_clean(); ?>
+	    <div class="container-fluid" id="ajoutChapitre">
+	    	<form action="index.php?action=addChapitre"  method="post">
+		        <label for="titre">Titre :</label>
+		        <input class="titreChapitre" type="text" placeholder="Titre du chapitre" name="titre" />
+		        <textarea name="contenu " id="myTextarea" placeholder="Écriver votre chapitre"></textarea>
+		        <input class="chapitreSubmit" type="submit" name="publication" value="Publier le chapitre" id="publier" />    	
+			</form>    
+		</div>
 
+	<?php $content = ob_get_clean(); ?>
 <?php require('template.php') ?>

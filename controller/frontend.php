@@ -62,10 +62,10 @@
  	}
 
   //Ajout commentaire
-	function addComment($id_utilisateur, $contenu, $id_chapitre){
+	function addComment($pseudo, $commentaire, $chapitre){
 
     	$commentManager = new CommentManager();
-    	$affectedLines = $commentManager->postComment($id_utilisateur, $contenu, $id_chapitre);
+    	$affectedLines = $commentManager->postComment($pseudo, $commentaire, $chapitre);
 
     	if ($affectedLines === false) {
         	throw new Exception('Impossible d\'ajouter le commentaire !');

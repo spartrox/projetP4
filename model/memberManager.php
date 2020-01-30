@@ -48,7 +48,7 @@ require_once('model/manager.php');
 		// Connexion à la base de données
 		$bdd = $this->bddConnect();
 
-        $newMember = $bdd->prepare("INSERT INTO  visiteurs(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
+        $newMember = $bdd->prepare("INSERT INTO visiteurs(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
         $newMember->execute(array($pseudo, $mail, $mdp));		
 
         return $newMember;

@@ -142,6 +142,10 @@ textarea{
 	border-radius: 5px;
 	margin-bottom: 10px;
 }
+#laisserCommentaire{
+	text-align: center;
+	color: red;
+}
 
 		/*////////////////////////  PAGE CONNEXION    ///////////////////////////////  */
 
@@ -163,10 +167,14 @@ footer{
 }
 		/*////////////////////////  AJOUT CHAPITRE    ///////////////////////////////  */
 #ajoutChapitre{
-	width: 50%;
+	width: 60%;
 }
 #myTextarea{
-	height: 150px;
+	height: 200px;
+}
+.chapitreSubmit{
+	margin-top: 5px;
+	
 }
 @media screen and (max-width: 650px){
 
@@ -186,7 +194,13 @@ footer{
 		margin-right: 0px;
 	}
 	#mdpConnexion{
-	margin-top: 5px;
-	margin-left: 42px;
-}
+		margin-top: 5px;
+		margin-left: 42px;
+	}
+	.titreChapitre{
+		margin-bottom: 5px;
+	}
+	#ajoutChapitre{
+		width: 100%;
+	}
 }
