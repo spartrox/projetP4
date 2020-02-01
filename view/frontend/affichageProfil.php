@@ -4,7 +4,7 @@
     
     <h2>Gestion du Profil</h2>
     <div align="center">
-        <div align="left">
+        <div>
           <button id="bouttonDeconnexion"><a href="index.php?action=pageDeconnexion">Se deconnecter</a></button>
         </div>
 

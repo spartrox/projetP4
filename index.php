@@ -78,9 +78,10 @@
 				} elseif ($_GET['action'] == 'addChapitre'){
 						if (!empty($_POST['titreChapitre']) && !empty($_POST['contenu'])){
 							newChapitre($_POST['titreChapitre'], $_POST['contenu']);
+							Header('Location: index.php?action=listeChapitres');
 						} 
 						else {
-							  throw new Exception('Le titre ou le contenu est vide !');
+							  throw new Exception('Titre ou contenu vide !');
 						}
 				}
 

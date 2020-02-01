@@ -1,9 +1,9 @@
 		/*////////////////////////  MENU    ///////////////////////////////  */
 .navbar-brand{
-	font-size: 1.8em;
+	font-size: 2em;
 }
 #navbarTogglerDemo03{
-	font-size: 1.3em;
+
 	background-color: #f8f8f8;
 }
 .nav-link{
@@ -16,6 +16,13 @@
 nav{
 	height: 100px;
 }
+.titreMenu{
+	font-size: 0.8em;
+	display: flex;
+}
+#menuPrincipal{
+	width: 100%;
+}
 
 		/*////////////////////////  TITRES    ///////////////////////////////  */
 h1{
@@ -26,7 +33,7 @@ h1{
 	font-weight: bold;
 }
 em{
-	color: #386473;
+	color: black;
 	font-weight: bold;
 }
 h2{
@@ -40,6 +47,10 @@ h2{
 	padding-bottom: 40px;
 }
 h3{
+	color: black;
+	font-weight: bold;
+}
+h4{
 	color: #386473;
 	font-weight: bold;
 }
@@ -50,8 +61,6 @@ h3{
 	height: auto;
 }
 button{
-	position: relative;
-	left: 44%;
 	background-color: #386473;
 	padding: 8px 10px 10px 10px;
 	border-radius: 4px;
@@ -60,6 +69,9 @@ button{
 	color: white;
 	font-weight: bold;
 	font-size: 0.8em;
+}
+.boutonAccueil{
+	text-align: center;
 }
 button a,button a:hover {
 	color: white;
@@ -174,10 +186,28 @@ footer{
 }
 .chapitreSubmit{
 	margin-top: 5px;
-	
 }
-@media screen and (max-width: 650px){
+		/*////////////////////////  RESPONSIVE    ///////////////////////////////  */
+@media  screen and (min-width: 721px) and (max-width: 1200px){
+	.navbar-brand{
+	font-size: 2.5em;
+	}
+	.titreMenu{
+		font-size: 0.5em;
+	}
+	.nav-link{
+		margin-left: 9px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+}
 
+@media  screen and (min-width: 401px) and (max-width: 720px){
+	.nav-link{
+		margin-left: 9px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
 	label{
 		display: none;
 	}
@@ -199,6 +229,57 @@ footer{
 	}
 	.titrechapitre{
 		margin-bottom: 5px;
+	}
+	#ajoutChapitre{
+		width: 100%;
+	}
+	#pied_de_page{
+		margin-top: 30px;
+	}
+}
+
+@media screen and (max-width: 400px){
+	label{
+		display: none;
+	}
+	.email{
+		margin-top: 5px;
+		margin-right: 0px;
+	}
+	.mdp{
+		margin-top: 5px;
+		margin-left: 0px;
+	}
+	.mdp2{
+		margin-top: 5px;
+		margin-right: 0px;
+	}
+	#mdpConnexion{
+		margin-top: 5px;
+		margin-left: 42px;
+	}
+	.nav-link{
+		font-size: 0.8em;
+		margin-left: 9px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+	h1{
+		font-size: 1.5em;
+	}
+	h2{
+		font-size: 1.2em;
+	}
+	.titreMenu{
+		position: relative;
+		margin-right: 20px;
+		font-size: 0.6em;
+	}
+	#pied_de_page{
+		margin-top: 30px;
+	}
+	button{
+		font-size: 0.5em;
 	}
 	#ajoutChapitre{
 		width: 100%;

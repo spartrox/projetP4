@@ -19,7 +19,7 @@
                <p class="phraseRetourChapitre"><a href="index.php?action=listeChapitres">Retour à la liste des chapitres</a></p>
             </div>        
             <hr>
-                <h3 align="center">Espace commentaire</h3>
+                <h4 align="center">Espace commentaire</h4>
             <hr>
             
             <?php 
