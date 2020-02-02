@@ -5,7 +5,6 @@
 	require_once('model/CommentManager.php');
 	require_once('model/PostManager.php');
 
-
 	function pageAdmin(){
 
       	require('view/backend/affichageAdministrateur.php');
@@ -24,6 +23,14 @@
 
 		$deleteChapitre = $postManager->deleteChapitre($postId);
 
-		Header('Location: index.php?action=addChapitre');
+		Header('Location: index.php?action=pageAdmin&new-post=success');
+	}
+
+	function deleteCommentaire($commentaire) {
+		$commentManager = new CommentManager();
+
+		$deletedCommentaire = $commentManager->deleteCommentaire($commentaire);
+
+	Header('Location: index.php?action=pageAdmin');
 	}
 

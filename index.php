@@ -92,6 +92,8 @@
 				} elseif ($_GET['action'] == 'deleteChapitre'){
 					deleteChapitre($_GET['id']);
 					
+				} elseif ($_GET['action'] == 'deleteCommentaire'){
+					deleteCommentaire($_GET['id']);
 				}
 
 			} else{
