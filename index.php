@@ -45,7 +45,7 @@
 	 			} elseif ($_GET['action'] == 'addComment'){
 	 					if (isset($_GET['id']) && $_GET['id'] > 0){
 	 						if (!empty($_SESSION['pseudo']) && !empty($_POST['commentaire'])){
-	 							addComment($_GET['id'], $_POST['commentaire'], $_GET['pseudo']);
+	 							addComment($_GET['id'], $_POST['commentaire'], $_POST['pseudo']);
 
 	 						} else{
 	 							   throw new Exception(" Veuillez entrer un commentaire !");
@@ -78,14 +78,18 @@
 				} elseif ($_GET['action'] == 'addChapitre'){
 						if (!empty($_POST['titreChapitre']) && !empty($_POST['contenu'])){
 							newChapitre($_POST['titreChapitre'], $_POST['contenu']);
-							Header('Location: index.php?action=listeChapitres');
+							Header('Location: index.php?action=pageAdmin');
+							echo "<p>L'article a bien été ajouté !</p>";
 						} 
 						else {
 							  throw new Exception('Titre ou contenu vide !');
 						}
 				
+				} elseif ($_GET['action'] == 'pageAdmin'){
+					pageAdmin();
+
 				} elseif ($_GET['action'] == 'deleteChapitre'){
-					deleteChapitre();
+					deleteChapitre($_GET['id']);
 					
 				}
 

@@ -44,6 +44,7 @@ class PostManager extends Manager{
     	// Connexion à la base de données
         $bdd = $this->bddConnect();  
         
+        // Suppression d'un chapitre
         $req = $bdd->prepare('DELETE FROM chapitre WHERE id = ?');
         $deleteChapitre = $req->execute(array($postId));
 

@@ -3,11 +3,11 @@
 	font-size: 2em;
 }
 #navbarTogglerDemo03{
-	font-size: 1.2em;
+	font-size: 1.1em;
 	background-color: #f8f8f8;
 }
 .nav-link{
-	margin-left: 30px;
+	margin-left: 25px;
 	border-bottom: 2px solid #f8f8f8;
 }
 .nav-link:hover{
@@ -17,8 +17,7 @@ nav{
 	height: 100px;
 }
 .titreMenu{
-	font-size: 0.8em;
-	display: flex;
+	font-size: 0.7em;
 }
 #menuPrincipal{
 	width: 100%;
@@ -187,10 +186,19 @@ footer{
 .chapitreSubmit{
 	margin-top: 5px;
 }
+		/*////////////////////////  GESTION ADMINISTRATEUR    ///////////////////////////////  */
+.gestionArticle{
+	margin-top: 30px; 
+	text-align: center;
+}
+#bouttonArticle{
+	margin-top: 20px;
+}
+
 		/*////////////////////////  RESPONSIVE    ///////////////////////////////  */
 @media  screen and (min-width: 721px) and (max-width: 1200px){
 	.navbar-brand{
-	font-size: 2.5em;
+	font-size: 2.3em;
 	}
 	.titreMenu{
 		font-size: 0.5em;

@@ -5,7 +5,11 @@
 	require_once('model/CommentManager.php');
 	require_once('model/PostManager.php');
 
-	
+	function pageAdmin(){
+
+      	require('view/backend/affichageAdministrateur.php');
+    }
+
 	function newChapitre($titre, $contenu){
 		$postManager = new PostManager();
 

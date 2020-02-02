@@ -41,8 +41,10 @@
     <?php if (isset($_SESSION['id']) && ($_SESSION['admin'])){ ?>
 
             <li class="nav-item">
-              <a class="nav-link" href="index.php?action=pageAjoutChapitre">Ajouter un chapitre</a>
+              <a class="nav-link" href="index.php?action=pageAdmin"><b>Gestion admin</b></a>
             </li>
+
+            
             
         <!-- Sinon on affiche le menu de base -->    
     <?php } }else { ?>

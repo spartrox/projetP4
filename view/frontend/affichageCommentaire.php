@@ -6,7 +6,7 @@
         <div class="container">
             <h3 align="center">
                 <?= htmlspecialchars($post['titre']); ?>
-            </h3>
+            </h3><br>
                 
             <p>
                 <?= nl2br($post['contenu']); ?>
@@ -46,7 +46,7 @@
             { ?>
 
             <article class="ajoutCommentaire container">    
-                <p><b><?= htmlspecialchars($_SESSION['pseudo']) ?></b> le <?=$c['comment_date_fr'] ?></p> <hr>
+                <p><b><?= htmlspecialchars($c['pseudo']) ?></b><i> Ajouté le <?=$c['comment_date_fr'] ?></i></p><hr>
                 <p><?= nl2br(htmlspecialchars($c['contenu'])) ?><br></p>
             </article>    
             

@@ -17,7 +17,7 @@
 					        	<?php echo htmlspecialchars($post['titre']); ?>
 					    	</h3>
 					    </a>
-					       <em>le <?php echo $post['date_creation_fr']; ?></em>
+					       <em> Ajouté le <?php echo $post['date_creation_fr']; ?></em>
 					    <p>	
 
 					    <!-- // On affiche le contenu des chapitres -->

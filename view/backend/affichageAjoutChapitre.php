@@ -24,6 +24,9 @@
 		        <input class="chapitreSubmit" type="submit" name="publication" value="Publier le chapitre" id="publier" />    	
 			</form>    
 		</div>
+        <div>
+            <p class="phraseRetourChapitre"><a href="index.php?action=pageAdmin">Retour au panneau administrateur</a></p>
+        </div> 		
 
 	<?php $content = ob_get_clean(); ?>
 <?php require('template.php') ?>
