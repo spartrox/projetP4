@@ -9,7 +9,7 @@
 
       <div class="titreMenu">
           <a class="navbar-brand col-md-3 " href="index.php"><em>Billet simple pour l'Alaska </em></a>
-      </div>
+      </div> 
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-6 mt-lg-0">
@@ -43,6 +43,8 @@
             <li class="nav-item">
               <a class="nav-link" href="index.php?action=pageAdmin"><b>Gestion admin</b></a>
             </li>
+
+            
             
         <!-- Sinon on affiche le menu de base -->    
     <?php } }else { ?>

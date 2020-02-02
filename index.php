@@ -79,14 +79,15 @@
 						if (!empty($_POST['titreChapitre']) && !empty($_POST['contenu'])){
 							newChapitre($_POST['titreChapitre'], $_POST['contenu']);
 							Header('Location: index.php?action=pageAdmin');
-							echo "<p>L'article a bien été ajouté !</p>";
 						} 
 						else {
 							  throw new Exception('Titre ou contenu vide !');
 						}
 				
 				} elseif ($_GET['action'] == 'pageAdmin'){
-					pageAdmin();
+					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
+						pageAdmin();
+					}
 
 				} elseif ($_GET['action'] == 'deleteChapitre'){
 					deleteChapitre($_GET['id']);

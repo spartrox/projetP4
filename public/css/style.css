@@ -196,7 +196,7 @@ footer{
 }
 
 		/*////////////////////////  RESPONSIVE    ///////////////////////////////  */
-@media  screen and (min-width: 721px) and (max-width: 1200px){
+@media  screen and (min-width: 731px) and (max-width: 1200px){
 	.navbar-brand{
 	font-size: 2.3em;
 	}
@@ -210,7 +210,7 @@ footer{
 	}
 }
 
-@media  screen and (min-width: 401px) and (max-width: 720px){
+@media  screen and (min-width: 401px) and (max-width: 730px){
 	.nav-link{
 		margin-left: 9px;
 		padding-top: 3px;
