@@ -28,4 +28,16 @@ class CommentManager extends Manager{
 
         return $affectedLines;
     }
+
+    public function deleteComment($commentId){
+        
+        // Connexion à la base de données
+        $bdd = $this->bddConnect();  
+        
+        // Suppression d'un commentaire
+        $req = $bdd->prepare('DELETE FROM commentaire WHERE id = ?');
+        $deletedComment = $req->execute(array($commentId));
+
+        return $deletedComment;
+    }
 }

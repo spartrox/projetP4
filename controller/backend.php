@@ -5,11 +5,13 @@
 	require_once('model/CommentManager.php');
 	require_once('model/PostManager.php');
 
+	//Affichage de la page Admin
 	function pageAdmin(){
 
       	require('view/backend/affichageAdministrateur.php');
     }
 
+	//Ajout d'un chapitre
 	function newChapitre($titre, $contenu){
 		$postManager = new PostManager();
 
@@ -17,19 +19,21 @@
 
 		Header('Location: index.php?action=addChapitre');
 	}
-	
-	function  deleteChapitre($postId){
+
+	//Surpression d'un chapitre	
+	function deletePost($postId){
 		$postManager = new PostManager();
 
-		$deleteChapitre = $postManager->deleteChapitre($postId);
+		$deletePost = $postManager->deletePost($postId);
 
 		Header('Location: index.php?action=pageAdmin&new-post=success');
 	}
 
-	function deleteCommentaire($commentaire) {
+	//Surpression d'un commentaire
+	function deleteComment($commentId) {
 		$commentManager = new CommentManager();
 
-		$deletedCommentaire = $commentManager->deleteCommentaire($commentaire);
+		$deletedComment = $commentManager->deleteComment($commentId);
 
 	Header('Location: index.php?action=pageAdmin');
 	}

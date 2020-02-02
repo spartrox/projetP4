@@ -89,11 +89,11 @@
 						pageAdmin();
 					}
 
-				} elseif ($_GET['action'] == 'deleteChapitre'){
-					deleteChapitre($_GET['id']);
+				} elseif ($_GET['action'] == 'deletePost'){
+					deletePost($_GET['id']);
 					
-				} elseif ($_GET['action'] == 'deleteCommentaire'){
-					deleteCommentaire($_GET['id']);
+				} elseif ($_GET['action'] == 'deleteComment'){
+					deleteComment($_GET['id']);
 				}
 
 			} else{

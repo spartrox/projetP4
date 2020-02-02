@@ -39,15 +39,15 @@ class PostManager extends Manager{
         return $newChapitre;
     }
 
-    public function deleteChapitre($postId){
+    public function deletePost($postId){
 
     	// Connexion à la base de données
         $bdd = $this->bddConnect();  
         
         // Suppression d'un chapitre
         $req = $bdd->prepare('DELETE FROM chapitre WHERE id = ?');
-        $deleteChapitre = $req->execute(array($postId));
+        $deletePost = $req->execute(array($postId));
 
-        return $deleteChapitre;  
+        return $deletePost;  
     }
 }
