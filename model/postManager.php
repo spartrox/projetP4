@@ -1,8 +1,8 @@
 <?php
 require_once("model/manager.php");
 
+	// GESTION DES CHAPITRES
 class PostManager extends Manager{
-	
 
 	public function getChapitres(){
 	
@@ -39,4 +39,14 @@ class PostManager extends Manager{
         return $newChapitre;
     }
 
+    public function deleteChapitre($postId){
+
+    	// Connexion à la base de données
+        $bdd = $this->bddConnect();  
+        
+        $req = $bdd->prepare('DELETE FROM chapitre WHERE id = ?');
+        $deleteChapitre = $req->execute(array($postId));
+
+        return $deleteChapitre;  
+    }
 }

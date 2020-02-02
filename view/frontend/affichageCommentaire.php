@@ -34,7 +34,7 @@
 
             <?php 
             } else{
-                    echo '<div id="laisserCommentaire"> Pour écrire un commentaire, veuillez vous <a href="index.php?action=pageConnexion"><b>Connecter<b></a></div>';
+                    echo '<div id="laisserCommentaire"> Pour écrire un commentaire, veuillez vous <a href="index.php?action=pageConnexion"><b>Connecter</b></a></div>';
             }
             ?>
 

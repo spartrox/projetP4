@@ -1,6 +1,7 @@
 <?php 
 require_once('model/manager.php');
 
+    //GESTION DES COMMENTAIRES
 class CommentManager extends Manager{
 
 	public function getComments($postId){

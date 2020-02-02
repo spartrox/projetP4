@@ -9,7 +9,7 @@
 
       <div class="titreMenu">
           <a class="navbar-brand col-md-3 " href="index.php"><em>Billet simple pour l'Alaska </em></a>
-      </div>
+      </div> 
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-6 mt-lg-0">

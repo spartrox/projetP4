@@ -1,133 +1,133 @@
- <?php
+<?php
 
- 	//Chargement des différents classes
- 	require_once('model/PostManager.php');
-	require_once('model/CommentManager.php');
-  require_once('model/MemberManager.php');
+   	//Chargement des différents classes
+   	require_once('model/PostManager.php');
+  	require_once('model/CommentManager.php');
+    require_once('model/MemberManager.php');
 
- 	//Création des différentes fonction
- 	function pageAccueil(){
+   	//Création des différentes fonction
+   	function pageAccueil(){
 
- 		require('view/frontend/affichageAccueil.php');
- 	}
+   		require('view/frontend/affichageAccueil.php');
+   	}
 
-  function pageInscription(){
+    function pageInscription(){
 
-    require('view/frontend/affichageInscription.php');
-  }
-
-  function pageRenseignements(){
-
-    require('view/frontend/affichageRenseignements.php');
-  }
-
-  function pageConnexion(){
-
-    require('view/frontend/affichageConnexion.php');
-  }
-
-  function pageProfil(){
-
-    require('view/frontend/affichageProfil.php');
-  }
-
-  function pageAjoutChapitre(){
-
-    require('view/backend/affichageAjoutChapitre.php');
-  }
-
-    function pageDeconnexion(){
-
-    require('view/frontend/affichageDeconnexion.php');
-  }
-
- 	function listeChapitres(){
-
- 		 	$postManager = new PostManager(); //Création d'un objet
- 		 	$posts = $postManager->getChapitres();
-
-			require('view/frontend/affichageChapitre.php');
- 	}
-
-  //Chapitre
- 	function post(){
-
- 		$postManager = new PostManager();
- 		$commentManager = new CommentManager();
-
- 		$post = $postManager->getChapitre($_GET['id']);
- 		$comments = $commentManager->getComments($_GET['id']);
-
- 		require('view/frontend/affichageCommentaire.php');
- 	}
-
-  //Ajout commentaire
-	function addComment($pseudo, $commentaire, $chapitre){
-
-    	$commentManager = new CommentManager();
-    	$affectedLines = $commentManager->postComment($pseudo, $commentaire, $chapitre);
-
-    	if ($affectedLines === false) {
-        	throw new Exception('Impossible d\'ajouter le commentaire !');
-   		
-   		} else {
-        header('Location: index.php?action=post&id=' . $postId);
+      require('view/frontend/affichageInscription.php');
     }
-  }
 
-  //Ajout membres
- 	function addMember($pseudo, $mdp, $mail){
+    function pageRenseignements(){
 
- 	  $memberManager = new MemberManager();
-    
-    $pseudoExist = $memberManager->checkPseudo($pseudo);
-    $mailExist = $memberManager->checkMail($mail);  
-      if ($pseudoExist){
-          throw new Exception('Pseudo déja utilisé, veuillez en trouver un autre !');
+      require('view/frontend/affichageRenseignements.php');
+    }
+
+    function pageConnexion(){
+
+      require('view/frontend/affichageConnexion.php');
+    }
+
+    function pageProfil(){
+
+      require('view/frontend/affichageProfil.php');
+    }
+
+    function pageAjoutChapitre(){
+
+      require('view/backend/affichageAjoutChapitre.php');
+    }
+
+      function pageDeconnexion(){
+
+      require('view/frontend/affichageDeconnexion.php');
+    }
+
+   	function listeChapitres(){
+
+   		 	$postManager = new PostManager(); //Création d'un objet
+   		 	$posts = $postManager->getChapitres();
+
+  			require('view/frontend/affichageChapitre.php');
+   	}
+
+    //Chapitre
+   	function post(){
+
+   		$postManager = new PostManager();
+   		$commentManager = new CommentManager();
+
+   		$post = $postManager->getChapitre($_GET['id']);
+   		$comments = $commentManager->getComments($_GET['id']);
+
+   		require('view/frontend/affichageCommentaire.php');
+   	}
+
+    //Ajout commentaire
+  	function addComment($pseudo, $commentaire, $chapitre){
+
+      	$commentManager = new CommentManager();
+      	$affectedLines = $commentManager->postComment($pseudo, $commentaire, $chapitre);
+
+      	if ($affectedLines === false) {
+          	throw new Exception('Impossible d\'ajouter le commentaire !');
+     		
+     		} else {
+          header('Location: index.php?action=post&id=' . $postId);
       }
+    }
 
-      if ($mailExist){
-          throw new Exception('Adresse mail déja utilisé, veuillez en trouver une autre !');
-      }
+    //Ajout membres
+   	function addMember($pseudo, $mdp, $mail){
 
-        if (!($pseudoExist) && !($mailExist)){
-
-            $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
-            $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
+   	  $memberManager = new MemberManager();
+      
+      $pseudoExist = $memberManager->checkPseudo($pseudo);
+      $mailExist = $memberManager->checkMail($mail);  
+        if ($pseudoExist){
+            throw new Exception('Pseudo déja utilisé, veuillez en trouver un autre !');
         }
-            //Redirection vers la page d'accueil
-            header('Location: index.php?action=pageAccueil');
- 	}
 
-  //Bouton page connexion
-  function pageConnexionSubmit($pseudo, $mdp){
+        if ($mailExist){
+            throw new Exception('Adresse mail déja utilisé, veuillez en trouver une autre !');
+        }
 
-    $memberManager = new MemberManager();
+          if (!($pseudoExist) && !($mailExist)){
 
-    $member = $memberManager->loginMember($pseudo);
-    $mdpCorrect = password_verify($_POST['mdpConnect'], $member['motdepasse']);
+              $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+              $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
+          }
+              //Redirection vers la page d'accueil
+              header('Location: index.php?action=pageAccueil');
+   	}
 
-    if (!isset($member['id'])){
-          throw new Exception("Mauvais identifiant !");
-      }
-        else {
-            if ($mdpCorrect){
-              $_SESSION['id'] = $member['id'];
-              $_SESSION['pseudo'] = $member['pseudo'];
-              $_SESSION['admin'] = $member['admin'];
-              header('Location: index.php');
-            }
-              else {
-                throw new Exception("Mauvais mot de passe !");
+    //Bouton page connexion
+    function pageConnexionSubmit($pseudo, $mdp){
+
+      $memberManager = new MemberManager();
+
+      $member = $memberManager->loginMember($pseudo);
+      $mdpCorrect = password_verify($_POST['mdpConnect'], $member['motdepasse']);
+
+      if (!isset($member['id'])){
+            throw new Exception("Mauvais identifiant !");
+        }
+          else {
+              if ($mdpCorrect){
+                $_SESSION['id'] = $member['id'];
+                $_SESSION['pseudo'] = $member['pseudo'];
+                $_SESSION['admin'] = $member['admin'];
+                header('Location: index.php');
               }
-            }
-  }
+                else {
+                  throw new Exception("Mauvais mot de passe !");
+                }
+              }
+    }
 
-  //Affichage des erreurs
- 	function error($e){
+    //Affichage des erreurs
+   	function error($e){
 
-   		require('view/frontend/affichageMessageErreur.php');
-	}
+     		require('view/frontend/affichageMessageErreur.php');
+  	}
 
 
 

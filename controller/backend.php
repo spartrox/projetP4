@@ -6,11 +6,19 @@
 	require_once('model/PostManager.php');
 
 	
-	function newChapitre($titre, $contenu) {
+	function newChapitre($titre, $contenu){
 		$postManager = new PostManager();
 
 		$newChapitre = $postManager->createPost($titre, $contenu);
 
 		Header('Location: index.php?action=addChapitre');
-}
+	}
+	
+	function  deleteChapitre($postId){
+		$postManager = new PostManager();
+
+		$deleteChapitre = $postManager->deleteChapitre($postId);
+
+		Header('Location: index.php?action=addChapitre');
+	}
 
