@@ -12,19 +12,10 @@
 	 			if ($_GET['action'] == 'listeChapitres'){
 	 				listeChapitres();
 
-	 			} elseif ($_GET['action'] == 'post'){
-
-	 				if(isset($_GET['id']) && $_GET['id'] > 0){
-	 					post();
-	 				
-	 				} else {
-	                		throw new Exception('Aucun identifiant de billet envoyé');
-	            	} 
-	 			
-	 			}  elseif ($_GET['action'] == 'pageAccueil'){
+	 			} elseif ($_GET['action'] == 'pageAccueil'){
 	 				pageAccueil();
 	 		
-	 		    }  elseif ($_GET['action'] == 'pageRenseignements'){
+	 		    } elseif ($_GET['action'] == 'pageRenseignements'){
 	 				pageRenseignements();
 
 	 			} elseif ($_GET['action'] == 'pageInscription'){
@@ -41,6 +32,15 @@
 	 			
 	 			} elseif ($_GET['action'] == 'pageConnexion'){				
 	 				pageConnexion();
+
+	 			} elseif ($_GET['action'] == 'post'){
+
+	 				if(isset($_GET['id']) && $_GET['id'] > 0){
+	 					post();
+	 				
+	 				} else {
+	                		throw new Exception('Aucun identifiant de billet envoyé');
+	            	} 
 
 	 			} elseif ($_GET['action'] == 'addComment'){
 	 					if (isset($_GET['id']) && $_GET['id'] > 0){
@@ -83,6 +83,10 @@
 						else {
 							  throw new Exception('Titre ou contenu vide !');
 						}
+				
+				} elseif ($_GET['action'] == 'deleteChapitre'){
+					deleteChapitre();
+					
 				}
 
 			} else{
