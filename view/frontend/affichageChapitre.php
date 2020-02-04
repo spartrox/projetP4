@@ -1,4 +1,3 @@
-
 <?php $title = "Blog de Jean Forteroche"; ?>
 <?php $script=""; ?>
 		<?php ob_start(); ?>

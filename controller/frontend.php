@@ -48,7 +48,6 @@
    		 	$posts = $postManager->getChapitres();
 
   			require('view/frontend/affichageChapitre.php');
-        require('view/backend/affichageAdministrateur.php');
    	}
 
     //Chapitre

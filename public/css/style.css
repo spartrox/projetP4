@@ -157,11 +157,35 @@ textarea{
 	text-align: center;
 	color: red;
 }
+.commentaire{
+	margin-left: 5px;
+	font-weight: bold;
+}
 
 		/*////////////////////////  PAGE CONNEXION    ///////////////////////////////  */
 
 #mdpConnexion{
 	margin-right: 42px;
+}
+
+		/*////////////////////////  AJOUT CHAPITRE    ///////////////////////////////  */
+#ajoutChapitre{
+	width: 60%;
+}
+#myTextarea{
+	height: 200px;
+}
+.chapitreSubmit{
+	margin-top: 5px;
+}
+
+		/*////////////////////////  GESTION ADMINISTRATEUR    ///////////////////////////////  */
+.gestionAdmin{
+	margin-top: 30px; 
+	text-align: center;
+}
+#bouttonArticle{
+	margin-top: 20px;
 }
 
 		/*////////////////////////  FOOTER    ///////////////////////////////  */
@@ -176,26 +200,9 @@ footer{
 	padding-bottom: 20px;
 	border: 1px solid black;
 }
-		/*////////////////////////  AJOUT CHAPITRE    ///////////////////////////////  */
-#ajoutChapitre{
-	width: 60%;
-}
-#myTextarea{
-	height: 200px;
-}
-.chapitreSubmit{
-	margin-top: 5px;
-}
-		/*////////////////////////  GESTION ADMINISTRATEUR    ///////////////////////////////  */
-.gestionArticle{
-	margin-top: 30px; 
-	text-align: center;
-}
-#bouttonArticle{
-	margin-top: 20px;
-}
 
 		/*////////////////////////  RESPONSIVE    ///////////////////////////////  */
+
 @media  screen and (min-width: 731px) and (max-width: 1200px){
 	.navbar-brand{
 	font-size: 2.3em;

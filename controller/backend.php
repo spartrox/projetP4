@@ -26,7 +26,7 @@
 
 		$deletePost = $postManager->deletePost($postId);
 
-		Header('Location: index.php?action=pageAdmin&new-post=success');
+		Header('Location: index.php?action=pageAdmin');
 	}
 
 	//Surpression d'un commentaire
