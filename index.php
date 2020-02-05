@@ -45,7 +45,7 @@
 	 			} elseif ($_GET['action'] == 'addComment'){
 	 					if (isset($_GET['id']) && $_GET['id'] > 0){
 	 						if (!empty($_SESSION['pseudo']) && !empty($_POST['commentaire'])){
-	 							addComment($_GET['id'], $_POST['commentaire'], $_POST['pseudo']);
+	 							addComment($_GET['id'], $_POST['commentaire'], $_SESSION['id']);
 
 	 						} else{
 	 							   throw new Exception(" Veuillez entrer un commentaire !");

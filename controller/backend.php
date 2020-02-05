@@ -7,6 +7,9 @@
 
 	//Affichage de la page Admin
 	function pageAdmin(){
+		$postManager = new PostManager();
+
+		$posts =  $postManager-> getChapitres();
 
       	require('view/backend/affichageAdministrateur.php');
     }

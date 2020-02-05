@@ -13,14 +13,15 @@
 					<div class="col-md-5" id="container-chapitres">
 					    <a href="index.php?action=post&amp;id=<?= $post['id']; ?>">
 					    	<h3>
-					        	<?php echo htmlspecialchars($post['titre']); ?>
+					        	<?php echo ($post['titre']); ?>
 					    	</h3>
 					    </a>
 					       <em> Ajouté le <?php echo $post['date_creation_fr']; ?></em>
-					    <p>	
+					    	
 
 					    <!-- // On affiche le contenu des chapitres -->
-					    <?php echo nl2br(htmlspecialchars($post['contenu'])); ?>
+					    <p>
+					    <?php echo nl2br(($post['contenu'])); ?>
 					    <br/>
 					    <em><a href="index.php?action=post&amp;id=<?= $post['id']; ?>">Écrire un commentaires</a></em>
 					    </p>

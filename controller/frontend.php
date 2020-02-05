@@ -57,22 +57,22 @@
    		$commentManager = new CommentManager();
 
    		$post = $postManager->getChapitre($_GET['id']);
-   		$comments = $commentManager->getComments($_GET['id']);
+   		$comments = $commentManager->postComment($_GET['id']);
 
    		require('view/frontend/affichageCommentaire.php');
    	}
 
     //Ajout commentaire
-  	function addComment($pseudo, $commentaire, $chapitre){
+  	function addComment($chapitre, $commentaire, $pseudo){
 
       	$commentManager = new CommentManager();
-      	$affectedLines = $commentManager->postComment($pseudo, $commentaire, $chapitre);
+      	$addComment = $commentManager->addComment($chapitre, $commentaire, $pseudo);
 
-      	if ($affectedLines === false) {
+      	if ($addComment === false) {
           	throw new Exception('Impossible d\'ajouter le commentaire !');
      		
      		} else {
-          header('Location: index.php?action=post&id=' . $postId);
+          header('Location: index.php?action=post&id=' . $chapitre);
       }
     }
 
