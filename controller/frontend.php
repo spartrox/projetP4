@@ -1,9 +1,9 @@
 <?php
 
    	//Chargement des différents classes
-   	require_once('model/PostManager.php');
-  	require_once('model/CommentManager.php');
-    require_once('model/MemberManager.php');
+   	require_once('model/postManager.php');
+  	require_once('model/commentManager.php');
+    require_once('model/memberManager.php');
 
    	//Création des différentes fonction
    	function pageAccueil(){

@@ -48,6 +48,7 @@ h2{
 h3{
 	color: black;
 	font-weight: bold;
+	text-decoration: underline;
 }
 h4{
 	color: #386473;
@@ -133,7 +134,7 @@ button a,button a:hover {
 	text-decoration: underline;
 }
 .contact2{
-	font-style: italic;:;
+	font-style: italic;
 }
 
 		/*////////////////////////  PAGE COMMENTAIRE   ///////////////////////////////  */
@@ -161,6 +162,13 @@ textarea{
 	margin-left: 5px;
 	font-weight: bold;
 }
+.signaler{
+	color: red;
+}
+.signaler:hover{
+	color: red;
+	font-weight: bold;
+}
 
 		/*////////////////////////  PAGE CONNEXION    ///////////////////////////////  */
 
@@ -184,8 +192,24 @@ textarea{
 	margin-top: 30px; 
 	text-align: center;
 }
-#bouttonArticle{
-	margin-top: 20px;
+.gestionAdmin p{
+	margin-top: 10px;
+	font-size: 1.5em;
+}
+.suppChapitre{
+	text-align: center;
+	font-size: 1.3em;
+	margin-bottom: 10px;
+}
+.chapitreIcone{
+	background-color: #f8f8f8;
+}
+.fa-trash-alt{
+	color: red;
+	padding-left: 20px;
+}
+.icone{
+	padding: 10px;
 }
 
 		/*////////////////////////  FOOTER    ///////////////////////////////  */

@@ -1,9 +1,9 @@
 <?php
 
 	//chargement des différents classes
-	require_once('model/AdminManager.php');
-	require_once('model/CommentManager.php');
-	require_once('model/PostManager.php');
+	require_once('model/adminManager.php');
+	require_once('model/commentManager.php');
+	require_once('model/postManager.php');
 
 	//Affichage de la page Admin
 	function pageAdmin(){

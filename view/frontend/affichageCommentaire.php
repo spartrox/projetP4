@@ -48,6 +48,11 @@
             <article class="ajoutCommentaire container">    
                 <p><b><?= htmlspecialchars($c['pseudo']) ?></b><i> Ajouté le <?=$c['comment_date_fr'] ?></i></p><hr>
                 <p><?= nl2br(htmlspecialchars($c['contenu'])) ?><br></p>
+            
+            <?php if (!empty($_SESSION)){ ?>
+                <a class="signaler" href="index.php?action=reportComment"><i class="fas fa-exclamation-triangle"></i> Signaler</a></p>                
+            <?php } ?>
+
             </article>    
             
             <?php 

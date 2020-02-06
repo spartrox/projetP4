@@ -94,6 +94,9 @@
 					
 				} elseif ($_GET['action'] == 'deleteComment'){
 					deleteComment($_GET['id']);
+				
+				} elseif ($_GET['action'] == 'reportComment'){
+					reportComment($_GET['id'], $_GET['signalement'], $_SESSION['id']);
 				}
 
 			} else{
