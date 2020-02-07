@@ -89,8 +89,16 @@
 						pageAdmin();
 					}
 
+				} elseif ($_GET['action'] == 'pageModifChapitre'){
+					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
+					
+
+						pageModifChapitre($_GET['id']);
+					}
+
 				} elseif ($_GET['action'] == 'deletePost'){
 					deletePost($_GET['id']);
+
 					
 				} elseif ($_GET['action'] == 'deleteComment'){
 					deleteComment($_GET['id']);

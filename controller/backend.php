@@ -23,7 +23,7 @@
 		Header('Location: index.php?action=addChapitre');
 	}
 
-	//Surpression d'un chapitre	
+	//Supression d'un chapitre	
 	function deletePost($postId){
 		$postManager = new PostManager();
 
@@ -32,12 +32,23 @@
 		Header('Location: index.php?action=pageAdmin');
 	}
 
-	//Surpression d'un commentaire
+	//Supression d'un commentaire
 	function deleteComment($commentId) {
 		$commentManager = new CommentManager();
 
 		$deletedComment = $commentManager->deleteComment($commentId);
 
-	Header('Location: index.php?action=pageAdmin');
+		Header('Location: index.php?action=pageAdmin');
+	}
+
+	//Modification d'un chapitre
+	function pageModifChapitre(){
+		$postManager = new PostManager();
+
+		$posts =  $postManager-> getChapitres();
+
+		
+
+		require('view/backend/affichageModifChapitre.php');
 	}
 

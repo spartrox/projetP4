@@ -89,8 +89,10 @@ button a,button a:hover {
 	background-color: #f8f8f8;
 }
 		/*////////////////////////  PAGE INSCRIPTION   ///////////////////////////////  */
-
-#inscription, #connexion, #publier{
+.center{
+	text-align:center;
+}
+#inscription, #connexion, #publier, #renseignement{
 	color: white;
 	background-color: #386473;
 	padding: 8px 10px 10px 10px;
@@ -103,6 +105,9 @@ button a,button a:hover {
 	text-decoration: underline;
 }
 #connexion:hover{
+	text-decoration: underline;
+}
+#renseignement:hover{
 	text-decoration: underline;
 }
 .formulaire{
@@ -204,13 +209,24 @@ textarea{
 .chapitreIcone{
 	background-color: #f8f8f8;
 }
-.fa-trash-alt{
+.icone i{
+	color: black;
+	font-size: 1.5em;
+	padding-left: 30px;
+}
+.icone p{
+	font-size: 0.4em;
+}
+.fa-trash-alt:hover{
 	color: red;
-	padding-left: 20px;
 }
-.icone{
-	padding: 10px;
+.fa-user-edit:hover{
+	color: #ff8000;
 }
+.fa-eye:hover{
+	color: #0070ff;
+}
+
 
 		/*////////////////////////  FOOTER    ///////////////////////////////  */
 #pied_de_page{
@@ -318,6 +334,9 @@ footer{
 		margin-top: 30px;
 	}
 	button{
+		font-size: 0.5em;
+	}
+	#renseignement{
 		font-size: 0.5em;
 	}
 	#ajoutChapitre{

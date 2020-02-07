@@ -50,4 +50,17 @@ class PostManager extends Manager{
 
         return $deletePost;  
     }
+
+    public function modifPost($titre, $contenu){
+
+        // Connexion à la base de données
+        $bdd = $this->bddConnect();  
+
+        // Modification d'un chapitre
+        $req = $bdd->prepare('SELECT titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM chapitre WHERE id = ? ');
+        $editPost->execute(array($titre, $contenu));
+        $editPost->fetch();
+
+        return $editPost;
+    }
 }

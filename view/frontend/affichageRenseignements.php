@@ -26,7 +26,7 @@
 
 	  <h2>Nous contacter</h2>
 
-	  <section id="contact">
+	  <div id="contact">
 	  	<div>
 		  <p>
 		  		<span class="contact1">Contact :</span> <br>
@@ -45,7 +45,7 @@
 		  	<span class="contact2">Email :</span> jean.forteroche@gmail.com
 		  </p>
 		</div>
-	  </section>
+	  </div>
 	  <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php') ?>

@@ -22,7 +22,7 @@
                      <label class="nom" for="mdp2">Confirmation du mot de passe :</label>
                      <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
                   </div>
-                  <div align="center">
+                  <div class="center">
                      <br/>
                      <input type="submit" name="forminscription" value="Je m'inscris" id="inscription" />
                   </div>

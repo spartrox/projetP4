@@ -1,7 +1,7 @@
 <?php $title = "Blog de Jean Forteroche"; ?>
 <?php $script=""; ?>
 		<?php ob_start(); ?>	
-			<div align="center">
+			<div class="center">
 				
 				<h2>Connexion</h2>	
 				<br><br>
@@ -14,7 +14,7 @@
 								<label>Mot de passe :</label>
 								<input type="password" name="mdpConnect" placeholder="Mot de passe">
 							</div>
-							<div align="center">
+							<div class="center">
 								<br>
 								<input type="submit" name="formconnexion" value="Se connecter" id="connexion">
 							</div>

@@ -31,14 +31,14 @@
       require('view/frontend/affichageProfil.php');
     }
 
-    function pageAjoutChapitre(){
-
-      require('view/backend/affichageAjoutChapitre.php');
-    }
-
       function pageDeconnexion(){
 
       require('view/frontend/affichageDeconnexion.php');
+    }
+
+      function pageAjoutChapitre(){
+
+      require('view/backend/affichageAjoutChapitre.php');
     }
 
    	function listeChapitres(){
