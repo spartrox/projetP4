@@ -52,3 +52,11 @@
 		require('view/backend/affichageModifChapitre.php');
 	}
 
+	function pageModifComment(){
+		$commentManager = new CommentManager();
+
+		$modifComment = $commentManager->modifComment();
+
+		require('view/backend/affichageModifComment.php');
+	}
+

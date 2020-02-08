@@ -38,4 +38,17 @@ class CommentManager extends Manager{
 
         return $deletedComment;
     }
+
+    public function modifComment(){
+
+        // Connexion à la base de données
+        $bdd = $this->bddConnect();
+
+
+        //insertion des commentaires signalé
+        $reportComment = $bdd->query('SELECT signalement FROM commentaire WHERE id = ?');
+
+        return $reportComment;
+
+    }
 }
