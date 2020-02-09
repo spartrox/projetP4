@@ -41,6 +41,8 @@
       require('view/backend/affichageAjoutChapitre.php');
     }
 
+
+
    	function listeChapitres(){
 
    		 	$postManager = new PostManager(); //Création d'un objet
@@ -58,6 +60,7 @@
 
    		$post = $postManager->getChapitre($_GET['id']);
    		$comments = $commentManager->postComment($_GET['id']);
+      $reportComment = $commentManager->reportComment($_GET['id']);
 
    		require('view/frontend/affichageCommentaire.php');
    	}

@@ -60,3 +60,15 @@
 		require('view/backend/affichageModifComment.php');
 	}
 
+    function modifPost($titre, $contenu, $postId){
+
+        // Connexion à la base de données
+        $bdd = $this->bddConnect();  
+
+        // Modification d'un chapitre
+        $req = $bdd->prepare('UPDATE chapitre SET titre = ? , contenu = ? , date_creation_fr = NOW() WHERE id = ? ');
+        $editPost = $req->execute(array($titre, $contenu, $postId));
+
+        return $editPost;
+    }
+

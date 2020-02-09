@@ -50,7 +50,7 @@
                 <p><?= nl2br(htmlspecialchars($c['contenu'])) ?><br></p>
             
             <?php if (!empty($_SESSION)){ ?>
-                <a class="signaler" href="index.php?action=reportComment"><i class="fas fa-exclamation-triangle"></i> Signaler</a></p>                
+                <a class="signaler" href="index.php?action=reportComment" onclick="return(confirm('Etes vous sur de vouloir signaler ce commentaire ? '))"><i class="fas fa-exclamation-triangle"></i> Signaler</a></p>                
             <?php } ?>
 
             </article>    

@@ -91,8 +91,6 @@
 
 				} elseif ($_GET['action'] == 'pageModifChapitre'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
-					
-
 						pageModifChapitre($_GET['id']);
 					}
 
