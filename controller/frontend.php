@@ -59,7 +59,7 @@
    		$commentManager = new CommentManager();
 
    		$post = $postManager->getChapitre($_GET['id']);
-   		$comments = $commentManager->postComment($_GET['id']);
+   		$comments = $commentManager->postComments($_GET['id']);
       $reportComment = $commentManager->reportComment($_GET['id']);
 
    		require('view/frontend/affichageCommentaire.php');

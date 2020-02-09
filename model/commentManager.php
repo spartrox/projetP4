@@ -4,7 +4,7 @@ require_once('model/manager.php');
     //GESTION DES COMMENTAIRES
 class CommentManager extends Manager{
 
-    public function postComment($postId){
+    public function postComments($postId){
 
     	//Connexion à la base de données
         $bdd = $this->bddConnect();
@@ -46,6 +46,7 @@ class CommentManager extends Manager{
 
         // insertion des commentaires signalé
         $reportComment = $bdd->prepare('SELECT signalement FROM commentaire WHERE id = ?');
+
 
     }
 

@@ -59,17 +59,16 @@ class PostManager extends Manager{
         return $deleteComments;  
     }
 
-    public function modifPost($titre, $contenu){
+    public function chapitreModif($postId){
 
         // Connexion à la base de données
         $bdd = $this->bddConnect();  
 
         // Modification d'un chapitre
-        $req = $bdd->prepare('SELECT titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM chapitre WHERE id = ? ');
-        $editPost->execute(array($titre, $contenu));
-        $editPost->fetch();
+        $req = $bdd->prepare('UPDATE chapitre SET titre = ? , contenu = ? , date_creation_fr = NOW() WHERE  id = ? ');
+        $chapitreModif = $req->execute(array($_POST['titre'], $_POST['contenu'], $postId));
 
-        return $editPost;
+        return $chapitreModif;
     }
 
 }
