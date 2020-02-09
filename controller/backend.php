@@ -29,6 +29,7 @@
 
 		$deletePost = $postManager->deletePost($postId);
 
+
 		Header('Location: index.php?action=pageAdmin');
 	}
 
@@ -42,10 +43,12 @@
 	}
 
 	//Modification d'un chapitre
-	function pageModifChapitre(){
+	function pageModifChapitre($postId){
 		$postManager = new PostManager();
+		$commentManager = new CommentManager();
 
-		$posts =  $postManager-> getChapitres();
+		$post =  $postManager-> getChapitre($postId);
+
 
 		
 

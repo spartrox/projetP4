@@ -48,9 +48,15 @@ class PostManager extends Manager{
         $req = $bdd->prepare('DELETE FROM chapitre WHERE id = ?');
         $deletePost = $req->execute(array($postId));
 
-        $comments = $bdd->prepare('SELECT * FROM commentaire WHERE id = ?');
+        $comments = $bdd->prepare('SELECT * FROM commentaire WHERE id_chapitre = ?');
+        $comments->execute(array($postId));
 
-        return $deletePost;  
+        while ($comment = $comments->fetch())
+        {
+            $deleteComments=$this->deletePost($comment['id']);
+        }
+
+        return $deleteComments;  
     }
 
     public function modifPost($titre, $contenu){
