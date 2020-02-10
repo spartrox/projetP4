@@ -10,7 +10,7 @@ class CommentManager extends Manager{
         $bdd = $this->bddConnect();
         
         // Insertion des commentaires
-        $comments = $bdd->prepare('SELECT visiteurs.pseudo, commentaire.contenu, commentaire.id_chapitre, DATE_FORMAT(commentaire.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaire INNER JOIN visiteurs ON visiteurs.id = commentaire.id_utilisateur WHERE commentaire.id_chapitre = ? ');
+        $comments = $bdd->prepare('SELECT visiteurs.pseudo, commentaire.contenu, commentaire.id_chapitre, DATE_FORMAT(commentaire.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaire INNER JOIN visiteurs ON visiteurs.id = commentaire.id_utilisateur  WHERE commentaire.id_chapitre = ? ORDER BY comment_date_fr ');
         $affectedLines = $comments->execute(array($postId));
 
         return $comments;
@@ -46,8 +46,6 @@ class CommentManager extends Manager{
 
         // insertion des commentaires signalé
         $reportComment = $bdd->prepare('SELECT signalement FROM commentaire WHERE id = ?');
-
-
     }
 
     /*public function modifComment(){

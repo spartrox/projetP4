@@ -34,7 +34,7 @@
 	}
 
 	//Supression d'un commentaire
-	function deleteComment($commentId) {
+	function deleteComment($commentId){
 		$commentManager = new CommentManager();
 
 		$deletedComment = $commentManager->deleteComment($commentId);
