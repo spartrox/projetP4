@@ -44,19 +44,14 @@ class PostManager extends Manager{
     	// Connexion à la base de données
         $bdd = $this->bddConnect();  
         
-        // Suppression d'un chapitre
+        // Suppression d'un chapitre et de ses commentaires
         $req = $bdd->prepare('DELETE FROM chapitre WHERE id = ?');
         $deletePost = $req->execute(array($postId));
 
-        $comments = $bdd->prepare('SELECT * FROM commentaire WHERE id_chapitre = ?');
-        $comments->execute(array($postId));
+        $req = $bdd->prepare('DELETE FROM commentaire WHERE id_chapitre = ?');
+        $deletePost = $req->execute(array($postId));
 
-        while ($comment = $comments->fetch())
-        {
-            $deleteComments=$this->deletePost($comment['id']);
-        }
-
-        return $deleteComments;  
+        return $deletePost;  
     }
 
     public function chapitreModif($postId){
