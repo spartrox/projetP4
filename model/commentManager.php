@@ -10,7 +10,7 @@ class CommentManager extends Manager{
         $bdd = $this->bddConnect();
         
         // Insertion des commentaires
-        $comments = $bdd->prepare('SELECT visiteurs.pseudo, commentaire.contenu, commentaire.id_chapitre, DATE_FORMAT(commentaire.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaire INNER JOIN visiteurs ON visiteurs.id = commentaire.id_utilisateur  WHERE commentaire.id_chapitre = ? ORDER BY comment_date_fr ');
+        $comments = $bdd->prepare('SELECT visiteurs.pseudo, commentaire.id, commentaire.contenu, commentaire.id_chapitre, DATE_FORMAT(commentaire.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaire INNER JOIN visiteurs ON visiteurs.id = commentaire.id_utilisateur  WHERE commentaire.id_chapitre = ? ORDER BY comment_date_fr ');
         $affectedLines = $comments->execute(array($postId));
 
         return $comments;
@@ -21,8 +21,8 @@ class CommentManager extends Manager{
         //Connexion à la base de données
         $bdd = $this->bddConnect();
 
-        $comments = $bdd->prepare('INSERT INTO commentaire(id_utilisateur, contenu, id_chapitre, comment_date) VALUES(?,?,?, NOW())');
-        $addComment = $comments->execute(array($pseudo, $commentaire, $chapitre));
+        $comments = $bdd->prepare('INSERT INTO commentaire(id, id_utilisateur, contenu, id_chapitre, comment_date) VALUES(?,?,?,?, NOW())');
+        $addComment = $comments->execute(array($id, $pseudo, $commentaire, $chapitre));
 
         return $addComment;
     }
@@ -34,9 +34,9 @@ class CommentManager extends Manager{
         
         // Suppression d'un commentaire
         $req = $bdd->prepare('DELETE FROM commentaire WHERE id = ?');
-        $deletedComment = $req->execute(array($commentId));
+        $deleteComment = $req->execute(array($commentId));
 
-        return $deletedComment;
+        return $deleteComment;
     }
 
     public function reportComment($report){

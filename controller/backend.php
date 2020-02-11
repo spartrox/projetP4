@@ -37,7 +37,7 @@
 	function deleteComment($commentId){
 		$commentManager = new CommentManager();
 
-		$deletedComment = $commentManager->deleteComment($commentId);
+		$deleteComment = $commentManager->deleteComment($commentId);
 
 		Header('Location: index.php?action=pageAdmin');
 	}
@@ -63,7 +63,7 @@
 	}
 
 
-
+	//Modification d'un commentaire
 	function pageModifComment(){
 		$commentManager = new CommentManager();
 
