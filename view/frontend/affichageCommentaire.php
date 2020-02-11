@@ -42,21 +42,28 @@
 
             <!-- Affichage des commentaires -->
             <?php 
-            while($c = $comments->fetch())
-            { ?>
+                while($c = $comments->fetch()){
+                    if (!empty($c['id'])){
+             ?>
 
-            <article class="ajoutCommentaire container">    
-                <p><b><?= htmlspecialchars($c['pseudo']) ?></b><i> Ajouté le <?=$c['comment_date_fr'] ?></i></p><hr>
-                <p><?= nl2br(htmlspecialchars($c['contenu'])) ?><br></p>
-            
-            <?php if (!empty($_SESSION)){ ?>
-                <p><a class="signaler" href="index.php?action=reportComment" onclick="return(confirm('Etes vous sur de vouloir signaler ce commentaire ? '))"><i class="fas fa-exclamation-triangle"></i>Signaler</a></p>                
-            <?php } ?>
+                    <article class="ajoutCommentaire container">    
+                        <p><b><?= htmlspecialchars($c['pseudo']) ?></b><i> Ajouté le <?=$c['comment_date_fr'] ?></i></p><hr>
+                        <p><?= nl2br(htmlspecialchars($c['contenu'])) ?><br></p>
+                    
+                    <?php if (!empty($_SESSION)){ ?>
+                        <p><a class="signaler" href="index.php?action=reportComment" onclick="return(confirm('Etes vous sur de vouloir signaler ce commentaire ? '))"><i class="fas fa-exclamation-triangle"></i>Signaler</a></p>                
+                    <?php } ?>
 
-            </article>    
+                    </article>    
             
-            <?php 
-            } ?> 
+            <?php
+                } else{
+                    echo "<p class='messageErreur'>Il n'y a aucun commentaire pour ce chapitre !</p>";
+                }           
+
+            }    // Fin de la boucle des autres commentaires
+                $comments->closeCursor();       
+            ?> 
 
     <?php $content = ob_get_clean(); ?>
 <?php require('template.php') ?>

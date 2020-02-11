@@ -41,11 +41,10 @@
       require('view/backend/affichageAjoutChapitre.php');
     }
 
-
-
+    // Affichage de la page Chapitre
    	function listeChapitres(){
 
-   		 	$postManager = new PostManager(); //Création d'un objet
+   		 	$postManager = new PostManager(); 
         
    		 	$posts = $postManager->getChapitres();
 
@@ -79,7 +78,7 @@
       }
     }
 
-    //Ajout membres
+    //Ajout membre
    	function addMember($pseudo, $mdp, $mail){
 
    	  $memberManager = new MemberManager();

@@ -110,6 +110,9 @@ button a,button a:hover {
 #renseignement:hover{
 	text-decoration: underline;
 }
+#publier:hover{
+	text-decoration: underline;
+}
 .formulaire{
 	text-align: center;
 }
@@ -225,6 +228,11 @@ textarea{
 }
 .fa-eye:hover{
 	color: #0070ff;
+}
+.messageErreur{
+	color: red;
+	text-align: center;
+	font-weight: bold;
 }
 
 

@@ -14,6 +14,8 @@
       	require('view/backend/affichageAdministrateur.php');
     }
 
+    	///////// CHAPITRE //////////////
+
 	//Ajout d'un chapitre
 	function newChapitre($titre, $contenu){
 		$postManager = new PostManager();
@@ -29,15 +31,6 @@
 
 		$deletePost = $postManager->deletePost($postId);
 
-
-		Header('Location: index.php?action=pageAdmin');
-	}
-
-	//Supression d'un commentaire
-	function deleteComment($commentId){
-		$commentManager = new CommentManager();
-
-		$deleteComment = $commentManager->deleteComment($commentId);
 
 		Header('Location: index.php?action=pageAdmin');
 	}
@@ -62,6 +55,17 @@
 		Header('Location: index.php?action=pageAdmin');
 	}
 
+    	///////// COMMENTAIRE //////////////
+
+
+	//Supression d'un commentaire
+	function deleteComment($commentId){
+		$commentManager = new CommentManager();
+
+		$deleteComment = $commentManager->deleteComment($commentId);
+
+		Header('Location: index.php?action=pageAdmin');
+	}
 
 	//Modification d'un commentaire
 	function pageModifComment(){
