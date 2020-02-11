@@ -88,6 +88,7 @@ button a,button a:hover {
 #container-3{
 	background-color: #f8f8f8;
 }
+
 		/*////////////////////////  PAGE INSCRIPTION   ///////////////////////////////  */
 .center{
 	text-align:center;
@@ -127,7 +128,6 @@ button a,button a:hover {
 }
 
 		/*////////////////////////  PAGE CHAPITRES   ///////////////////////////////  */
-
 #container-chapitres{
 	background-color: #f8f8f8;
 	margin: 10px;
@@ -179,7 +179,6 @@ textarea{
 }
 
 		/*////////////////////////  PAGE CONNEXION    ///////////////////////////////  */
-
 #mdpConnexion{
 	margin-right: 42px;
 }
@@ -247,6 +246,13 @@ footer{
 	padding-top: 20px;
 	padding-bottom: 20px;
 	border: 1px solid black;
+}
+
+		/*////////////////////////  MESSAGE ERREUR    ///////////////////////////////  */
+#message_erreur{
+	margin-top: 30px;
+	font-size: 1.2em;
+	text-align: center;
 }
 
 		/*////////////////////////  RESPONSIVE    ///////////////////////////////  */

@@ -98,7 +98,6 @@
               $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
               $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
           }
-              //Redirection vers la page d'accueil
               header('Location: index.php?action=pageAccueil');
    	}
 
@@ -125,17 +124,20 @@
                 }
               }
     }
+      
+    //Report d'un commentaire
+    function reportComment($report){
+
+      $commentManager = new CommentManager();
+
+      $reportComment = $commentManager->reportComment($report);
+
+      header('Location: index.php?action=post&id=' . $chapitre);
+    }
+
 
     //Affichage des erreurs
    	function error($e){
 
      		require('view/frontend/affichageMessageErreur.php');
   	}
-
-
-
- 	
-
-
-
-

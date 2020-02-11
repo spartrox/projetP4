@@ -1,7 +1,6 @@
 <?php
 
 	//chargement des différents classes
-	require_once('model/adminManager.php');
 	require_once('model/commentManager.php');
 	require_once('model/postManager.php');
 
@@ -68,12 +67,11 @@
 	}
 
 	//Modification d'un commentaire
-	function pageModifComment(){
+	function pageModifComment($commentId){
 		$commentManager = new CommentManager();
 
-		$modifComment = $commentManager->modifComment();
+		$modifComment = $commentManager->modifComment($commentId);
 
-		require('view/backend/affichageModifComment.php');
+		require('view/backend/affichageModifCommentaire.php');
 	}
-
 

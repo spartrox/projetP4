@@ -53,12 +53,11 @@
                     <?php if (!empty($_SESSION)){ ?>
                         <p><a class="signaler" href="index.php?action=reportComment" onclick="return(confirm('Etes vous sur de vouloir signaler ce commentaire ? '))"><i class="fas fa-exclamation-triangle"></i>Signaler</a></p>                
                     <?php } ?>
-
                     </article>    
             
             <?php
                 } else{
-                    echo "<p class='messageErreur'>Il n'y a aucun commentaire pour ce chapitre !</p>";
+                    echo "<p class='messageErreur'>Il n'y a aucun commentaire pour ce chapitre, soyez le premier à écrire un commentaire :)</p>";
                 }           
 
             }    // Fin de la boucle des autres commentaires

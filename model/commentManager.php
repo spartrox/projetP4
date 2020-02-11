@@ -22,7 +22,7 @@ class CommentManager extends Manager{
         $bdd = $this->bddConnect();
 
         // Ajout des commentaires
-        $comments = $bdd->prepare('INSERT INTO commentaire(id, id_utilisateur, contenu, id_chapitre, comment_date) VALUES(?,?,?,?, NOW())');
+        $comments = $bdd->prepare('INSERT INTO commentaire(id, id_utilisateur, contenu, id_chapitre, comment_date) VALUES(?,?,?,?, NOW()) ');
         $addComment = $comments->execute(array($id, $pseudo, $commentaire, $chapitre));
 
         return $addComment;
@@ -45,20 +45,23 @@ class CommentManager extends Manager{
         // Connexion à la base de données
         $bdd = $this->bddConnect();
 
-        // insertion des commentaires signalé
-        $reportComment = $bdd->prepare('SELECT signalement FROM commentaire WHERE id = ?');
+        // Ajout d'un commentaire signalé
+        $req = $bdd->prepare('INSERT INTO commentaire(signalement) VALUES (?) ');
+        $reportComment = $req->execute(array($report));
+
+        return $reportComment;
     }
 
-    /*public function modifComment(){
+    public function modifComment($commentId){
 
         // Connexion à la base de données
         $bdd = $this->bddConnect();
 
+        // Modification d'un commentaire
+        $req = $bdd->prepare('UPDATE commentaire SET contenu = ?, date_creation_fr = NOW() WHERE id = ? ');
+        $modifComment = $req->execute(array($_POST['contenu'], $commentId));
 
-        // insertion des commentaires signalé
-        $reportComment = $bdd->query('SELECT signalement FROM commentaire WHERE id = ?');
+        return $modifComment;
 
-        return $reportComment;
-
-    } */
+    } 
 }

@@ -107,7 +107,12 @@
 					deleteComment($_GET['id']);
 				
 				} elseif ($_GET['action'] == 'reportComment'){
-					reportComment($_GET['id'], $_GET['signalement'], $_SESSION['id']);
+					reportComment($_GET['id'], $_GET['report']);
+				
+				} elseif ($_GET['action'] == 'pageModifComment'){
+					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
+						pageModifComment($_GET['id']);
+					}
 				}
 
 			} else{
