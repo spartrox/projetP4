@@ -22,11 +22,20 @@
 						    	
 
 						    <!-- // On affiche le contenu des chapitres -->
-						    <p>
+						    	<p>
 						    <?php echo nl2br(($post['contenu'])); ?>
-						    <br/>
-						    <em><a href="index.php?action=post&amp;id=<?= $post['id']; ?>">Écrire un commentaires</a></em>
-						    </p>
+						    	<br/>
+
+						    <?php if (!empty($_SESSION)){ ?>
+						    	<em><a href="index.php?action=post&amp;id=<?= $post['id']; ?>">Écrire un commentaires</a></em>
+							
+							<?php 
+								} else{ ?>
+									<em><a href="index.php?action=pageConnexion">Connectez-vous pour écrire un commentaires !</a></em>
+							<?php
+								} 
+							?>
+						    	</p>
 						</div>
 
 					<!-- // Fin de la boucle des chapitres -->

@@ -87,6 +87,8 @@
 				} elseif ($_GET['action'] == 'pageAdmin'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
 						pageAdmin();
+					} else {
+						pageAccueil();
 					}
 
 				} elseif ($_GET['action'] == 'pageModifChapitre'){
@@ -97,7 +99,7 @@
 				} elseif ($_GET['action'] == 'chapitreModif') {
 					if (isset($_GET['id']) && $_GET['id'] > 0){
 						chapitreModif($_GET['id']);
-					}
+					} 
 
 				} elseif ($_GET['action'] == 'deletePost'){
 					deletePost($_GET['id']);

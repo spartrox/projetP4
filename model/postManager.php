@@ -60,8 +60,8 @@ class PostManager extends Manager{
         $bdd = $this->bddConnect();  
 
         // Modification d'un chapitre
-        $req = $bdd->prepare('UPDATE chapitre SET titre = ? , contenu = ? , date_creation_fr = NOW() WHERE id = ? ');
-        $chapitreModif = $req->execute(array($_POST['titre'], $_POST['contenu'], $postId));
+        $req = $bdd->prepare('UPDATE chapitre SET titre = ? , contenu = ? , date_creation = NOW() WHERE id = ? ');
+        $chapitreModif = $req->execute(array($_POST['titreChapitre'], $_POST['contenu'], $postId));
 
         return $chapitreModif;
     }

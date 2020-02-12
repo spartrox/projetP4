@@ -10,7 +10,11 @@
 
 		$posts =  $postManager-> getChapitres();
 
-      	require('view/backend/affichageAdministrateur.php');
+		if ($posts === false){
+			throw new Exception('Impossible d\'accéder à cette page');
+		} else{
+      			require('view/backend/affichageAdministrateur.php');
+      	}
     }
 
     	///////// CHAPITRE //////////////
@@ -19,9 +23,14 @@
 	function newChapitre($titre, $contenu){
 		$postManager = new PostManager();
 
-		$newChapitre = $postManager->createPost($titre, $contenu);
 
-		Header('Location: index.php?action=addChapitre');
+		$newChapitre = $postManager->createPost($titre, $contenu);
+		
+		if ($newChapitre === false){
+				throw new Exception('Impossible d\'ajouter un chapitre, veuillez recommencer');
+		} else{
+				Header('Location: index.php?action=addChapitre');
+		}
 	}
 
 	//Supression d'un chapitre	
@@ -30,8 +39,11 @@
 
 		$deletePost = $postManager->deletePost($postId);
 
-
-		Header('Location: index.php?action=pageAdmin');
+		if ($deletePost === false){
+				throw new Exception('Impossible de supprimer ce chapitre, veuillez recommencer !');
+		} else{
+				Header('Location: index.php?action=pageAdmin');
+		}
 	}
 
 	//Modification d'un chapitre
@@ -42,7 +54,11 @@
 		$post =  $postManager-> getChapitre($postId);
 		$comments = $commentManager->postComments($postId);
 
-		require('view/backend/affichageModifChapitre.php');
+		if ($post && $comments === false){
+				throw new Exception('Impossible d\'accéder à la page de modification de chapitre, veuillez recommencer !');
+		} else{
+				require('view/backend/affichageModifChapitre.php');
+		}
 	}
 
 	//Chapitre modifié
@@ -51,7 +67,11 @@
 
 		$chapitreModif = $postManager-> chapitreModif($postId);
 
-		Header('Location: index.php?action=pageAdmin');
+		if ($chapitreModif === false){
+				throw new Exception('Impossible de modifier ce chapitre, veuillez recommencer !');
+		} else{
+				Header('Location: index.php?action=pageAdmin');
+		}
 	}
 
     	///////// COMMENTAIRE //////////////
@@ -63,7 +83,11 @@
 
 		$deleteComment = $commentManager->deleteComment($commentId);
 
-		Header('Location: index.php?action=pageAdmin');
+		if ($deleteComment === false){
+				throw new Exception('Impossible de supprimer ce commentaire, veuillez recommencer !');
+		} else{
+				Header('Location: index.php?action=pageAdmin');
+		}
 	}
 
 	//Modification d'un commentaire
@@ -72,6 +96,10 @@
 
 		$modifComment = $commentManager->modifComment($commentId);
 
-		require('view/backend/affichageModifCommentaire.php');
+		if ($modifComment === false){
+				throw new Exception('Impossible de modifier ce chapitre, veuillez recommencer !');
+		} else{
+				require('view/backend/affichageModifCommentaire.php');
+		}
 	}
 

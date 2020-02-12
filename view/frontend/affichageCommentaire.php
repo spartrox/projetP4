@@ -51,7 +51,7 @@
                         <p><?= nl2br(htmlspecialchars($c['contenu'])) ?><br></p>
                     
                     <?php if (!empty($_SESSION)){ ?>
-                        <p><a class="signaler" href="index.php?action=reportComment" onclick="return(confirm('Etes vous sur de vouloir signaler ce commentaire ? '))"><i class="fas fa-exclamation-triangle"></i>Signaler</a></p>                
+                        <p><a class="signaler" href="index.php?action=reportComment&amp;idPost=<?= $post['id']?>&idComment=<?= $c['id']?>" onclick="return(confirm('Etes vous sur de vouloir signaler ce commentaire ? '))"><i class="fas fa-exclamation-triangle"></i>Signaler</a></p>                
                     <?php } ?>
                     </article>    
             
