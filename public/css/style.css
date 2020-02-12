@@ -247,6 +247,12 @@ footer{
 	padding-bottom: 20px;
 	border: 1px solid black;
 }
+		/*////////////////////////  MENTION LEGALES    ///////////////////////////////  */
+.mentionLegales{
+	
+	margin-left: 10%;
+	margin-right: 10%;
+}
 
 		/*////////////////////////  MESSAGE ERREUR    ///////////////////////////////  */
 #message_erreur{

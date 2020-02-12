@@ -33,6 +33,9 @@
 	 			} elseif ($_GET['action'] == 'pageConnexion'){				
 	 				pageConnexion();
 
+	 			} elseif ($_GET['action'] == 'pageMentionLegales'){
+	 				pageMentionLegales();
+
 	 			} elseif ($_GET['action'] == 'post'){
 
 	 				if(isset($_GET['id']) && $_GET['id'] > 0){

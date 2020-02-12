@@ -41,6 +41,11 @@
       require('view/backend/affichageAjoutChapitre.php');
     }
 
+      function pageMentionLegales(){
+
+        require('view/frontend/affichageMentionLegales.php');
+      }
+
     // Affichage de la page Chapitre
    	function listeChapitres(){
 
@@ -48,91 +53,105 @@
         
    		 	$posts = $postManager->getChapitres();
 
-  			require('view/frontend/affichageChapitre.php');
+        if ($posts === false){
+                throw new Exception('Impossible d\'afficher la page des chapitres, veuillez recommencer !');
+        } else{
+  			        require('view/frontend/affichageChapitre.php');
+        }
    	}
 
     //Chapitre
    	function post(){
 
-   		$postManager = new PostManager();
-   		$commentManager = new CommentManager();
+     		$postManager = new PostManager();
+     		$commentManager = new CommentManager();
 
-   		$post = $postManager->getChapitre($_GET['id']);
-   		$comments = $commentManager->postComments($_GET['id']);
-      $reportComment = $commentManager->reportComment($_GET['id']);
+     		$post = $postManager->getChapitre($_GET['id']);
+     		$comments = $commentManager->postComments($_GET['id']);
+        $reportComment = $commentManager->reportComment($_GET['id']);
 
-   		require('view/frontend/affichageCommentaire.php');
-   	}
+        if ($post && $comments === false){
+                throw new Exception('Impossible d\'afficher la page des chapitres, veuillez recommencer !');
+        } else{
+     		        require('view/frontend/affichageCommentaire.php');
+     	  }
+    }
 
     //Ajout commentaire
   	function addComment($chapitre, $commentaire, $pseudo){
 
-      	$commentManager = new CommentManager();
-      	$addComment = $commentManager->addComment($chapitre, $commentaire, $pseudo);
+        	$commentManager = new CommentManager();
+        	$addComment = $commentManager->addComment($chapitre, $commentaire, $pseudo);
 
-      	if ($addComment === false) {
-          	throw new Exception('Impossible d\'ajouter le commentaire !');
-     		
-     		} else {
-          header('Location: index.php?action=post&id=' . $chapitre);
-      }
+        	if ($addComment === false) {
+            	throw new Exception('Impossible d\'ajouter le commentaire !');
+       		
+       		} else {
+            header('Location: index.php?action=post&id=' . $chapitre);
+        }
     }
 
     //Ajout membre
    	function addMember($pseudo, $mdp, $mail){
 
-   	  $memberManager = new MemberManager();
-      
-      $pseudoExist = $memberManager->checkPseudo($pseudo);
-      $mailExist = $memberManager->checkMail($mail);  
-        if ($pseudoExist){
-            throw new Exception('Pseudo déja utilisé, veuillez en trouver un autre !');
-        }
-
-        if ($mailExist){
-            throw new Exception('Adresse mail déja utilisé, veuillez en trouver une autre !');
-        }
-
-          if (!($pseudoExist) && !($mailExist)){
-
-              $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
-              $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
+     	  $memberManager = new MemberManager();
+        
+        $pseudoExist = $memberManager->checkPseudo($pseudo);
+        $mailExist = $memberManager->checkMail($mail);  
+          if ($pseudoExist){
+              throw new Exception('Pseudo déja utilisé, veuillez en trouver un autre !');
           }
-              header('Location: index.php?action=pageAccueil');
-   	}
+
+          if ($mailExist){
+              throw new Exception('Adresse mail déja utilisé, veuillez en trouver une autre !');
+          }
+
+            if (!($pseudoExist) && !($mailExist)){
+
+                $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+                $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
+            
+            } else {
+                    header('Location: index.php?action=pageAccueil');
+   	        }
+    }
 
     //Bouton page connexion
     function pageConnexionSubmit($pseudo, $mdp){
 
-      $memberManager = new MemberManager();
+        $memberManager = new MemberManager();
 
-      $member = $memberManager->loginMember($pseudo);
-      $mdpCorrect = password_verify($_POST['mdpConnect'], $member['motdepasse']);
+        $member = $memberManager->loginMember($pseudo);
+        $mdpCorrect = password_verify($_POST['mdpConnect'], $member['motdepasse']);
 
-      if (!isset($member['id'])){
-            throw new Exception("Mauvais identifiant !");
-        }
-          else {
-              if ($mdpCorrect){
-                $_SESSION['id'] = $member['id'];
-                $_SESSION['pseudo'] = $member['pseudo'];
-                $_SESSION['admin'] = $member['admin'];
-                header('Location: index.php');
-              }
-                else {
-                  throw new Exception("Mauvais mot de passe !");
+        if (!isset($member['id'])){
+              throw new Exception("Mauvais identifiant !");
+          }
+            else {
+                if ($mdpCorrect){
+                  $_SESSION['id'] = $member['id'];
+                  $_SESSION['pseudo'] = $member['pseudo'];
+                  $_SESSION['admin'] = $member['admin'];
+                  header('Location: index.php');
                 }
-              }
+                  else {
+                    throw new Exception("Mauvais mot de passe !");
+                  }
+                }
     }
       
     //Report d'un commentaire
     function reportComment($report){
 
-      $commentManager = new CommentManager();
+        $commentManager = new CommentManager();
 
-      $reportComment = $commentManager->reportComment($report);
+        $reportComment = $commentManager->reportComment($report);
 
-      header('Location: index.php?action=post&id=' . $chapitre);
+        if ($reportComment === false){
+                throw new Exception('Impossible de signaler ce commentaire, veuillez recommencer !');
+        } else{
+                header('Location: index.php?action=post&id=' . $chapitre);
+        }
     }
 
 
