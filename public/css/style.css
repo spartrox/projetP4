@@ -228,6 +228,9 @@ textarea{
 .fa-eye:hover{
 	color: #0070ff;
 }
+.fa-comments:hover{
+	color: grey;
+}
 .messageErreur{
 	color: red;
 	text-align: center;

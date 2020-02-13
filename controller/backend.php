@@ -24,7 +24,7 @@
 		$postManager = new PostManager();
 
 
-		$newChapitre = $postManager->createPost($titre, $contenu);
+		$newChapitre = $postManager-> createPost($titre, $contenu);
 		
 		if ($newChapitre === false){
 				throw new Exception('Impossible d\'ajouter un chapitre, veuillez recommencer');
@@ -37,7 +37,7 @@
 	function deletePost($postId){
 		$postManager = new PostManager();
 
-		$deletePost = $postManager->deletePost($postId);
+		$deletePost = $postManager-> deletePost($postId);
 
 		if ($deletePost === false){
 				throw new Exception('Impossible de supprimer ce chapitre, veuillez recommencer !');
@@ -46,7 +46,7 @@
 		}
 	}
 
-	//Modification d'un chapitre
+	//Page gestion chapitre
 	function pageModifChapitre($postId){
 		$postManager = new PostManager();
 		$commentManager = new CommentManager();
@@ -54,7 +54,7 @@
 		$post =  $postManager-> getChapitre($postId);
 		$comments = $commentManager->postComments($postId);
 
-		if ($post && $comments === false){
+		if ($post  === false){
 				throw new Exception('Impossible d\'accéder à la page de modification de chapitre, veuillez recommencer !');
 		} else{
 				require('view/backend/affichageModifChapitre.php');
@@ -81,7 +81,7 @@
 	function deleteComment($commentId){
 		$commentManager = new CommentManager();
 
-		$deleteComment = $commentManager->deleteComment($commentId);
+		$deleteComment = $commentManager-> deleteComment($commentId);
 
 		if ($deleteComment === false){
 				throw new Exception('Impossible de supprimer ce commentaire, veuillez recommencer !');
@@ -90,16 +90,33 @@
 		}
 	}
 
-	//Modification d'un commentaire
-	function pageModifComment($commentId){
+	function pageCommentChapitre($postId){
+		$postManager = new PostManager();
+		$commentManager = new CommentManager();
+		
+		$post =  $postManager-> getChapitre($postId);
+		$comments = $commentManager->postComments($postId);
+
+		if ($post  === false){
+				throw new Exception('Impossible d\'accéder à la page des commentaires, veuillez recommencer !');
+		} else{
+				require('view/backend/affichageCommentaireChapitre.php');
+		}
+
+	}
+
+	//Page gestion commentaire
+	function pageCommentSignale($postId){
+		$postManager = new PostManager();
 		$commentManager = new CommentManager();
 
-		$modifComment = $commentManager->modifComment($commentId);
+		$post =  $postManager-> getChapitre($postId);
+		$comments = $commentManager-> postComments($postId);
 
-		if ($modifComment === false){
-				throw new Exception('Impossible de modifier ce chapitre, veuillez recommencer !');
+		if ($comments === false){
+				throw new Exception('Impossible d\'accéder à la page de modification de commentaire, veuillez recommencer !');
 		} else{
-				require('view/backend/affichageModifCommentaire.php');
+				require('view/backend/affichageCommentaireSignale.php');
 		}
 	}
 

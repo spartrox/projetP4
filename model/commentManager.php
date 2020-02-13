@@ -9,11 +9,15 @@ class CommentManager extends Manager{
     	// Connexion à la base de données
         $bdd = $this->bddConnect();
         
-        // Récupération des commentaires
+        // Récupération des commentaires pour chaque chapitre
         $comments = $bdd->prepare('SELECT visiteurs.pseudo, commentaire.id, commentaire.contenu, commentaire.id_chapitre, DATE_FORMAT(commentaire.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaire INNER JOIN visiteurs ON visiteurs.id = commentaire.id_utilisateur  WHERE commentaire.id_chapitre = ? ORDER BY comment_date_fr ');
         $affectedLines = $comments->execute(array($postId));
 
         return $comments;
+    }
+
+    public function Comments(){
+        
     }
 
     public function addComment($chapitre, $commentaire, $pseudo){
@@ -52,16 +56,4 @@ class CommentManager extends Manager{
         return $reportComment;
     }
 
-    public function modifComment($commentId){
-
-        // Connexion à la base de données
-        $bdd = $this->bddConnect();
-
-        // Modification d'un commentaire
-        $req = $bdd->prepare('UPDATE commentaire SET contenu = ?, date_creation_fr = NOW() WHERE id = ? ');
-        $modifComment = $req->execute(array($_POST['contenu'], $commentId));
-
-        return $modifComment;
-
-    } 
 }

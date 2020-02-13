@@ -99,10 +99,15 @@
 						pageModifChapitre($_GET['id']);
 					}
 
-				} elseif ($_GET['action'] == 'chapitreModif') {
+				} elseif ($_GET['action'] == 'chapitreModif'){
 					if (isset($_GET['id']) && $_GET['id'] > 0){
 						chapitreModif($_GET['id']);
 					} 
+
+				} elseif ($_GET['action'] == 'pageCommentChapitre'){
+					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
+						pageCommentChapitre($_GET['id']);
+					}	
 
 				} elseif ($_GET['action'] == 'deletePost'){
 					deletePost($_GET['id']);
@@ -116,7 +121,7 @@
 				
 				} elseif ($_GET['action'] == 'pageModifComment'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
-						pageModifComment($_GET['id']);
+						pageCommentSignale($_GET['id']);
 					}
 				}
 
