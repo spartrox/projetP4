@@ -97,17 +97,23 @@
 				} elseif ($_GET['action'] == 'pageModifChapitre'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
 						pageModifChapitre($_GET['id']);
+					} else {
+						pageAccueil();
 					}
 
 				} elseif ($_GET['action'] == 'chapitreModif'){
 					if (isset($_GET['id']) && $_GET['id'] > 0){
 						chapitreModif($_GET['id']);
-					} 
+					} else {
+						pageAccueil();
+					}
 
 				} elseif ($_GET['action'] == 'pageCommentChapitre'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
 						pageCommentChapitre($_GET['id']);
-					}	
+					} else {
+						pageAccueil();
+					}
 
 				} elseif ($_GET['action'] == 'deletePost'){
 					deletePost($_GET['id']);
@@ -122,6 +128,8 @@
 				} elseif ($_GET['action'] == 'pageModifComment'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
 						pageCommentSignale($_GET['id']);
+					} else {
+						pageAccueil();
 					}
 				}
 

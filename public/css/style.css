@@ -236,7 +236,15 @@ textarea{
 	text-align: center;
 	font-weight: bold;
 }
+.accederPageCommentaire{
+	color: black;
+	font-weight: bold;
+}
+.accederPageCommentaire:hover{
+	color: 
+	font-weight: bold;
 
+}
 
 		/*////////////////////////  FOOTER    ///////////////////////////////  */
 #pied_de_page{
