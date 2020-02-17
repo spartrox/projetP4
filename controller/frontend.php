@@ -141,16 +141,17 @@
     }
       
     //Report d'un commentaire
-    function reportComment($id){
-
+    function reportComment($report){
+        
         $commentManager = new CommentManager();
 
-        $reportComment = $commentManager->reportComment($id);
+        $reportComment = $commentManager->reportComment($report);
+
 
         if ($reportComment === false){
                 throw new Exception('Impossible de signaler ce commentaire, veuillez recommencer !');
         } else{
-                header('Location: index.php?action=post&id=' . $chapitre);
+                header('Location: index.php?action=pageAdmin');
         }
     }
 

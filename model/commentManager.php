@@ -16,10 +16,6 @@ class CommentManager extends Manager{
         return $comments;
     }
 
-    public function Comments(){
-        
-    }
-
     public function addComment($chapitre, $commentaire, $pseudo){
 
         // Connexion à la base de données
@@ -44,14 +40,14 @@ class CommentManager extends Manager{
         return $deleteComment;
     }
 
-    public function reportComment($id){
+    public function reportComment($report){
         
         // Connexion à la base de données
         $bdd = $this->bddConnect(); 
 
         // Ajout d'un commentaire signalé
-        $req = $bdd->prepare('UPDATE commentaire SET signalement = 1 WHERE id = ? ');
-        $reportComment = $req->execute(array($id));
+        $req = $bdd->prepare('SELECT * FROM commentaire WHERE id = ? ');
+        $reportComment = $req->execute(array($report));
 
         return $reportComment;
     }
