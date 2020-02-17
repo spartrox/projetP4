@@ -141,11 +141,11 @@
     }
       
     //Report d'un commentaire
-    function reportComment($report){
+    function reportComment($id){
 
         $commentManager = new CommentManager();
 
-        $reportComment = $commentManager->reportComment($report);
+        $reportComment = $commentManager->reportComment($id);
 
         if ($reportComment === false){
                 throw new Exception('Impossible de signaler ce commentaire, veuillez recommencer !');

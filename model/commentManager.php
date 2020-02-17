@@ -44,14 +44,14 @@ class CommentManager extends Manager{
         return $deleteComment;
     }
 
-    public function reportComment($report){
-
+    public function reportComment($id){
+        
         // Connexion à la base de données
-        $bdd = $this->bddConnect();
+        $bdd = $this->bddConnect(); 
 
         // Ajout d'un commentaire signalé
-        $req = $bdd->prepare('INSERT INTO commentaire(signalement) VALUES (?) ');
-        $reportComment = $req->execute(array($report));
+        $req = $bdd->prepare('UPDATE commentaire SET signalement = 1 WHERE id = ? ');
+        $reportComment = $req->execute(array($id));
 
         return $reportComment;
     }

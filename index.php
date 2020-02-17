@@ -117,13 +117,12 @@
 
 				} elseif ($_GET['action'] == 'deletePost'){
 					deletePost($_GET['id']);
-
-					
+	
 				} elseif ($_GET['action'] == 'deleteComment'){
 					deleteComment($_GET['id']);
 				
 				} elseif ($_GET['action'] == 'reportComment'){
-					reportComment($_GET['id'], $_GET['report']);
+					reportComment($_GET['id']);
 				
 				} elseif ($_GET['action'] == 'pageModifComment'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
