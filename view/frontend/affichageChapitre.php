@@ -47,7 +47,16 @@
 				}
 					$posts->closeCursor();
 				?>
-
+				<?php if (!empty($_SESSION) && ($_SESSION['admin'])){ ?>
+					<div class="accesPageAdmin">
+						<p><em><a href="index.php?action=pageAdmin">Accéder à la partie administrateur</a></em><p>
+					</div>
+				<?php
+					} else{ 
+						echo"";
+					}
+				?>
+					
 		        </div>  
 		      </div>
 		</section>

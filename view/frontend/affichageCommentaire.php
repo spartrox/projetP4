@@ -4,6 +4,9 @@
     <h2>Bonne lecture !</h2>
 
         <div class="container">
+            <div>
+                <em><p class="phraseRetourChapitre"><a href="index.php?action=pageModifChapitre&amp;id=<?= $post['id']?>">Modifier ce chapitre</a></p></em>
+            </div>
             <h3 align="center">
                 <?= htmlspecialchars($post['titre']); ?>
             </h3><br>

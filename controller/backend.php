@@ -90,6 +90,7 @@
 		}
 	}
 
+	//page gestion des commentaires de chaque chapitre
 	function pageCommentChapitre($postId){
 		$postManager = new PostManager();
 		$commentManager = new CommentManager();
@@ -105,7 +106,7 @@
 
 	}
 
-	//Page gestion commentaire
+	//Page gestion commentaires signalé
 	function pageCommentSignale($postId){
 		$postManager = new PostManager();
 		$commentManager = new CommentManager();
@@ -114,9 +115,11 @@
 		$comments = $commentManager-> postComments($postId);
 
 		if ($comments === false){
-				throw new Exception('Impossible d\'accéder à la page de modification de commentaire, veuillez recommencer !');
+				throw new Exception('Impossible d\'accéder à la page des commentaires signalé, veuillez recommencer !');
 		} else{
 				require('view/backend/affichageCommentaireSignale.php');
 		}
-	}
+}
+
+	
 

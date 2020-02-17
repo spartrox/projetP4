@@ -132,6 +132,9 @@ button a,button a:hover {
 	background-color: #f8f8f8;
 	margin: 10px;
 }
+.accesPageAdmin{
+	margin-left: 30%;
+}
 
 		/*////////////////////////  PAGE RENSEIGNEMENTS   ///////////////////////////////  */
 #contact{
@@ -213,7 +216,7 @@ textarea{
 }
 .icone i{
 	color: black;
-	font-size: 1.3em;
+	font-size: 1.4em;
 	padding-left: 30px;
 }
 .icone p{
@@ -229,7 +232,7 @@ textarea{
 	color: #0070ff;
 }
 .fa-comments:hover{
-	color: grey;
+	color: green;
 }
 .messageErreur{
 	color: red;

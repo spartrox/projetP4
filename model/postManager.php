@@ -54,6 +54,19 @@ class PostManager extends Manager{
         return $deletePost;  
     }
 
+    public function deletPost($postId){
+        
+        // Connexion à la base de données
+        $bdd = $this->bddConnect();  
+
+        // Suppression d'un chapitre et de ses commentaires
+        $req = $bdd->prepare(' ALTER TABLE chapitre FOREIGN KEY (id) REFERENCES commentaire(id_chapitre) ON DELETE CASCADE');        
+        $deletePost = $req->execute(array($postId));
+
+        return $deletePost; 
+
+    }
+
     public function chapitreModif($postId){
 
         // Connexion à la base de données
