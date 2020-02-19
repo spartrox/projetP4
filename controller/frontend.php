@@ -68,7 +68,7 @@
 
      		$post = $postManager->getChapitre($_GET['id']);
      		$comments = $commentManager->postComments($_GET['id']);
-        $reportComment = $commentManager->reportComment($_GET['id']);
+        $reportComments = $commentManager->reportComment($_GET['id']);
 
         if ($post && $comments === false){
                 throw new Exception('Impossible d\'afficher la page des chapitres, veuillez recommencer !');
@@ -141,20 +141,19 @@
     }
       
     //Report d'un commentaire
-    function reportComment($report){
+    function reportComment($reportId){
         
         $commentManager = new CommentManager();
 
-        $reportComment = $commentManager->reportComment($report);
+        $repComments = $commentManager->reportComment($reportId);
 
-
-        if ($reportComment === false){
-                throw new Exception('Impossible de signaler ce commentaire, veuillez recommencer !');
-        } else{
-                header('Location: index.php?action=pageAdmin');
+          if ($repComments === false) {
+              throw new Exception('Impossible de signaler ce commentaire !');
+          
+          } else {
+            header('Location: index.php?action=pageAdmin');
         }
     }
-
 
     //Affichage des erreurs
    	function error($e){

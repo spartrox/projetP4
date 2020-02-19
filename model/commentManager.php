@@ -22,7 +22,7 @@ class CommentManager extends Manager{
         $bdd = $this->bddConnect();
 
         // Ajout des commentaires
-        $comments = $bdd->prepare('INSERT INTO commentaire(id, id_utilisateur, contenu, id_chapitre, comment_date) VALUES(?,?,?,?, NOW()) ');
+        $comments = $bdd->prepare('INSERT INTO commentaire(id, id_utilisateur, contenu, id_chapitre, comment_date) VALUES(?,?,?,?, NOW())');
         $addComment = $comments->execute(array($id, $pseudo, $commentaire, $chapitre));
 
         return $addComment;
@@ -40,16 +40,30 @@ class CommentManager extends Manager{
         return $deleteComment;
     }
 
-    public function reportComment($report){
+    public function reportComment($reportId){
         
         // Connexion à la base de données
         $bdd = $this->bddConnect(); 
 
         // Ajout d'un commentaire signalé
-        $req = $bdd->prepare('SELECT * FROM commentaire WHERE id = ? ');
-        $reportComment = $req->execute(array($report));
+        $comments = $bdd->prepare('UPDATE commentaire SET signalement = 1 WHERE id = ?');
+        $repComments = $comments->execute(array($reportId));
 
-        return $reportComment;
+        return $repComments;
     }
+
+        public function addReportComments($repComments){
+
+        // Connexion à la base de données
+        $bdd = $this->bddConnect();
+        
+        // Récupération des commentaires signalé
+        $reportComments = $bdd->prepare('SELECT * FROM commentaire WHERE id = ? ORDER BY DESC');
+        $affectedLine = $reportComments->execute(array($repComments));
+
+        return $reportComments;
+    }
+
+
 
 }

@@ -54,7 +54,7 @@ class PostManager extends Manager{
         return $deletePost;  
     }
 
-    public function deletPost($postId){
+    /*public function deletePost($postId){
         
         // Connexion à la base de données
         $bdd = $this->bddConnect();  
@@ -65,7 +65,7 @@ class PostManager extends Manager{
 
         return $deletePost; 
 
-    }
+    } */
 
     public function chapitreModif($postId){
 

@@ -115,13 +115,25 @@
 					}
 
 				} elseif ($_GET['action'] == 'deletePost'){
-					deletePost($_GET['id']);
+					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
+						deletePost($_GET['id']);
+					} else {
+						pageAccueil();
+					}
 	
 				} elseif ($_GET['action'] == 'deleteComment'){
-					deleteComment($_GET['id']);
+					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
+						deleteComment($_GET['id']);
+					} else {
+						pageAccueil();
+					}
 				
 				} elseif ($_GET['action'] == 'reportComment'){
-					reportComment($_GET['id']);
+					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
+						reportComment($_GET['id']);
+					} else {
+						pageAccueil();
+					}
 				
 				} elseif ($_GET['action'] == 'pageModifComment'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){

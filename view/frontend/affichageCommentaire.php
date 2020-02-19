@@ -7,14 +7,14 @@
             <div>
                 <em><p class="phraseRetourChapitre"><a href="index.php?action=pageModifChapitre&amp;id=<?= $post['id']?>">Modifier ce chapitre</a></p></em>
             </div>
-            <h3 align="center">
+            <h3>
                 <?= htmlspecialchars($post['titre']); ?>
             </h3><br>
                 
             <p>
                 <?= nl2br($post['contenu']); ?>
             </p>
-                <em >publié le <?= $post['date_creation_fr']; ?></em>
+                <em>publié le <?= $post['date_creation_fr']; ?></em>
         </div><br><br>
             
         <div>
@@ -22,7 +22,7 @@
                <p class="phraseRetourChapitre"><a href="index.php?action=listeChapitres">Retour à la liste des chapitres</a></p>
             </div>        
             <hr>
-                <h4 align="center">Espace commentaire</h4>
+                <h4>Espace commentaire</h4>
             <hr>
             
             <?php 

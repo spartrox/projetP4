@@ -90,7 +90,7 @@
 		}
 	}
 
-	//page gestion des commentaires de chaque chapitre
+	//page gestion des commentaires pour chaque chapitre
 	function pageCommentChapitre($postId){
 		$postManager = new PostManager();
 		$commentManager = new CommentManager();
@@ -106,15 +106,13 @@
 
 	}
 
-	//Page gestion commentaires signalé
-	function pageCommentSignale($postId){
-		$postManager = new PostManager();
+	//Page gestion des commentaires signalé
+	function pageCommentSignale($repComments){
 		$commentManager = new CommentManager();
 
-		$post =  $postManager-> getChapitre($postId);
-		$comments = $commentManager-> postComments($postId);
+		$reportComments = $commentManager-> addReportComments($repComments);
 
-		if ($comments === false){
+		if ($reportComments === false){
 				throw new Exception('Impossible d\'accéder à la page des commentaires signalé, veuillez recommencer !');
 		} else{
 				require('view/backend/affichageCommentaireSignale.php');
