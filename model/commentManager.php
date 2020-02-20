@@ -52,17 +52,28 @@ class CommentManager extends Manager{
         return $repComments;
     }
 
-        public function addReportComments($repComments){
+        public function addReportComments(){
 
         // Connexion à la base de données
         $bdd = $this->bddConnect();
         
         // Récupération des commentaires signalé
-        $reportComments = $bdd->prepare('SELECT * FROM commentaire WHERE id = ? ORDER BY DESC');
-        $affectedLine = $reportComments->execute(array($repComments));
+        $reportComments = $bdd->query('SELECT visiteurs.pseudo, commentaire.id, commentaire.contenu, commentaire.id_chapitre, DATE_FORMAT(commentaire.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaire INNER JOIN visiteurs ON visiteurs.id = commentaire.id_utilisateur WHERE commentaire.signalement = 1  ORDER BY comment_date_fr');
 
         return $reportComments;
     }
+
+    public function notReportComment($reportId){
+        
+        // Connexion à la base de données
+        $bdd = $this->bddConnect(); 
+
+        // Ajout d'un commentaire signalé
+        $comments = $bdd->prepare('UPDATE commentaire SET signalement = 0 WHERE id = ?');
+        $reportComments = $comments->execute(array($reportId));
+
+        return $reportComments;
+    }    
 
 
 

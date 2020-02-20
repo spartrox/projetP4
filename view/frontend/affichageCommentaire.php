@@ -5,7 +5,16 @@
 
         <div class="container">
             <div>
-                <em><p class="phraseRetourChapitre"><a href="index.php?action=pageModifChapitre&amp;id=<?= $post['id']?>">Modifier ce chapitre</a></p></em>
+                <?php 
+                    if (!empty($_SESSION['admin'])){     
+                ?>
+                    <em><p class="phraseRetourChapitre"><a href="index.php?action=pageModifChapitre&amp;id=<?= $post['id']?>">Modifier ce chapitre</a></p></em>
+                
+                <?php
+                    } else {
+                        echo "";
+                    }
+                ?>
             </div>
             <h3>
                 <?= htmlspecialchars($post['titre']); ?>
@@ -36,9 +45,9 @@
             </form>
 
             <?php 
-            } else{
+                } else{
                     echo '<div id="laisserCommentaire"> Pour écrire un commentaire, veuillez vous <a href="index.php?action=pageConnexion"><b>Connecter</b></a></div>';
-            }
+                }
             ?>
 
         </div><br><br>

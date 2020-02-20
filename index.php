@@ -127,17 +127,24 @@
 					} else {
 						pageAccueil();
 					}
-				
+	
 				} elseif ($_GET['action'] == 'reportComment'){
+					if (isset($_SESSION['id']) && isset($_GET['idPost']) && isset($_GET['idComment'])){
+						reportComment($_GET['idPost'], $_GET['idComment']);
+					} else {
+						pageAccueil();
+					}
+					
+				} elseif ($_GET['action'] == 'notReportComment'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
-						reportComment($_GET['id']);
+						notReportComment($_GET['id']);
 					} else {
 						pageAccueil();
 					}
 				
 				} elseif ($_GET['action'] == 'pageModifComment'){
 					if (isset($_SESSION['id']) && ($_SESSION['admin'])){
-						pageCommentSignale($_GET['id']);
+						pageCommentSignale();
 					} else {
 						pageAccueil();
 					}
@@ -149,7 +156,7 @@
 	} 
 	// Fin des tests
    	
-  	//Début des Erreur		
+  	//Gestion des erreurs	
 	catch(Exception $e)
 	{
 	    error($e);

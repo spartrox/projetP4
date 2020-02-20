@@ -62,7 +62,6 @@
 
     //Chapitre
    	function post(){
-
      		$postManager = new PostManager();
      		$commentManager = new CommentManager();
 
@@ -79,9 +78,9 @@
 
     //Ajout commentaire
   	function addComment($chapitre, $commentaire, $pseudo){
-
         	$commentManager = new CommentManager();
-        	$addComment = $commentManager->addComment($chapitre, $commentaire, $pseudo);
+        	
+          $addComment = $commentManager->addComment($chapitre, $commentaire, $pseudo);
 
         	if ($addComment === false) {
             	throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -93,7 +92,6 @@
 
     //Ajout membre
    	function addMember($pseudo, $mdp, $mail){
-
      	  $memberManager = new MemberManager();
         
         $pseudoExist = $memberManager->checkPseudo($pseudo);
@@ -118,7 +116,6 @@
 
     //Bouton page connexion
     function pageConnexionSubmit($pseudo, $mdp){
-
         $memberManager = new MemberManager();
 
         $member = $memberManager->loginMember($pseudo);
@@ -141,19 +138,32 @@
     }
       
     //Report d'un commentaire
-    function reportComment($reportId){
-        
+    function reportComment($idPost, $idComment){
         $commentManager = new CommentManager();
 
-        $repComments = $commentManager->reportComment($reportId);
+        $repComments = $commentManager->reportComment($idComment);
 
           if ($repComments === false) {
               throw new Exception('Impossible de signaler ce commentaire !');
           
           } else {
-            header('Location: index.php?action=pageAdmin');
+            header('Location: index.php?action=post&id=' . $idPost);
         }
     }
+
+    //Retirer le signalement d'un commentaire
+    function notReportComment($reportId){
+      $commentManager = new CommentManager();
+
+      $reportComments = $commentManager-> notReportComment($reportId);
+
+      if ($reportComments === false){
+          throw new Exception('Impossible de retirer le signalement, veuillez recommencer !');
+      } else{
+          Header('Location: index.php?action=pageAdmin');
+      }
+
+  }
 
     //Affichage des erreurs
    	function error($e){

@@ -247,7 +247,9 @@ textarea{
 .accederPageCommentaire:hover{
 	color: 
 	font-weight: bold;
-
+}
+.signalement{
+	padding: 10px;
 }
 
 		/*////////////////////////  FOOTER    ///////////////////////////////  */

@@ -107,16 +107,17 @@
 	}
 
 	//Page gestion des commentaires signalé
-	function pageCommentSignale($repComments){
+	function pageCommentSignale(){
 		$commentManager = new CommentManager();
 
-		$reportComments = $commentManager-> addReportComments($repComments);
+		$reportComments = $commentManager-> addReportComments();
 
 		if ($reportComments === false){
 				throw new Exception('Impossible d\'accéder à la page des commentaires signalé, veuillez recommencer !');
 		} else{
 				require('view/backend/affichageCommentaireSignale.php');
 		}
+		
 }
 
 	

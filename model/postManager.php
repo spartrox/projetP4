@@ -48,24 +48,16 @@ class PostManager extends Manager{
         $req = $bdd->prepare('DELETE FROM chapitre WHERE id = ?');
         $deletePost = $req->execute(array($postId));
 
+        ////////////// A supprimer lors de la  clé étrangère
         $req = $bdd->prepare('DELETE FROM commentaire WHERE id_chapitre = ?');
         $deletePost = $req->execute(array($postId));
 
         return $deletePost;  
     }
 
-    /*public function deletePost($postId){
-        
-        // Connexion à la base de données
-        $bdd = $this->bddConnect();  
-
-        // Suppression d'un chapitre et de ses commentaires
-        $req = $bdd->prepare(' ALTER TABLE chapitre FOREIGN KEY (id) REFERENCES commentaire(id_chapitre) ON DELETE CASCADE');        
-        $deletePost = $req->execute(array($postId));
-
-        return $deletePost; 
-
-    } */
+    /*
+        ALTER TABLE chapitre ADD CONSTRAINT chapitre FOREIGN KEY chapitre(id) REFERENCES commentaire(id_chapitre) ON DELETE CASCADE'        
+     */
 
     public function chapitreModif($postId){
 
