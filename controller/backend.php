@@ -23,7 +23,6 @@
 	function newChapitre($titre, $contenu){
 		$postManager = new PostManager();
 
-
 		$newChapitre = $postManager-> createPost($titre, $contenu);
 		
 		if ($newChapitre === false){
