@@ -7,10 +7,13 @@
 		        <div class="row ">
 		          		         
 		        <?php
-					while ($post = $posts->fetch()){
-						if (!empty($post)){
-				?>
+					$result = $reportComments->rowCount();					
+						if ($result === 0){
+							echo "<p>Il n'y a actuellement pas de chapitre publié</p>";
 
+						} else {
+							while ($post = $posts->fetch()){
+				?>
 						<div class="col-md-5" id="container-chapitres">
 						    <a href="index.php?action=post&amp;id=<?= $post['id']; ?>">
 						    	<h3>
@@ -19,8 +22,6 @@
 						    </a>
 						       <em> Ajouté le <?php echo $post['date_creation_fr']; ?></em>
 						       
-						    	
-
 						    <!-- // On affiche le contenu des chapitres -->
 						    	<p>
 						    <?php echo nl2br(($post['contenu'])); ?>
@@ -37,14 +38,10 @@
 							?>
 						    	</p>
 						</div>
+				<?php						
+						}	
 
-					<!-- // Fin de la boucle des chapitres -->
-				<?php
-					} else {
-						echo "<p>Il n'y a actuellement pas de chapitre publié</p>";
-					}
-
-				}
+					} // Fin de la boucle des chapitres 
 					$posts->closeCursor();
 				?>
 				<?php if (!empty($_SESSION) && ($_SESSION['admin'])){ ?>
