@@ -20,7 +20,7 @@
                   </div>
                   <div class="mdp2">
                      <label class="nom" for="mdp2">Confirmation du mot de passe :</label>
-                     <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
+                     <input type="password" placeholder="Confirmer votre mdp" id="mdp2" name="mdp2" />
                   </div>
                   <div class="center">
                      <br/>

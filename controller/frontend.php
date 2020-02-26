@@ -129,7 +129,7 @@
                   $_SESSION['id'] = $member['id'];
                   $_SESSION['pseudo'] = $member['pseudo'];
                   $_SESSION['admin'] = $member['admin'];
-                  header('Location: index.php');
+                  echo '<script>window.location.href="index.php?action=pageAccueil";</script>';
                 }
                   else {
                     throw new Exception("Mauvais mot de passe !");
