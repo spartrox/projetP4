@@ -3,13 +3,13 @@
 		<?php ob_start(); ?>
 		<h2>Liste de tous les chapitres publiés</h2>
 		<section>
-		      <div class="container col-md-8">
+		    <div class="container col-md-8">
 		        <div class="row ">
 		          		         
 		        <?php
-					$result = $reportComments->rowCount();					
+					$result = $posts->rowCount();					
 						if ($result === 0){
-							echo "<p>Il n'y a actuellement pas de chapitre publié</p>";
+							echo "<p class='messageErreur'>Il n'y a actuellement pas de chapitre publié</p>";
 
 						} else {
 							while ($post = $posts->fetch()){
@@ -39,25 +39,24 @@
 						    	</p>
 						</div>
 				<?php						
-						}	
+							}	
 
-					} // Fin de la boucle des chapitres 
-					$posts->closeCursor();
+						} // Fin de la boucle des chapitres 
+						$posts->closeCursor();
 				?>
-				<?php if (!empty($_SESSION) && ($_SESSION['admin'])){ ?>
+		        </div>  
+		    </div>
+		      	<?php if (!empty($_SESSION) && ($_SESSION['admin'])){ ?>
 					<div class="accesPageAdmin">
 						<p><em><a href="index.php?action=pageAdmin">Accéder à la partie administrateur</a></em><p>
 					</div>
+
 				<?php
 					} else{ 
 						echo"";
 					}
 				?>
-					
-		        </div>  
-		      </div>
 		</section>
 		
 		<?php $content = ob_get_clean(); ?>
-
 <?php require('template.php') ?>

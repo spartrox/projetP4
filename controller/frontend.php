@@ -108,9 +108,10 @@
 
                 $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
                 $newMember = $memberManager->createMember($pseudo, $mail, $mdp);
+                header('Location: index.php?action=pageConnexion');
             
             } else {
-                    header('Location: index.php?action=pageAccueil');
+                    throw new Exception('Erreurs lors de l\'inscription veuillez recommencer !');
    	        }
     }
 
@@ -129,7 +130,8 @@
                   $_SESSION['id'] = $member['id'];
                   $_SESSION['pseudo'] = $member['pseudo'];
                   $_SESSION['admin'] = $member['admin'];
-                  echo '<script>window.location.href="index.php?action=pageAccueil";</script>';
+                  header('Location:https://blog-jean-forteroche.webagency-allanboite.net/index.php');
+                  exit;
                 }
                   else {
                     throw new Exception("Mauvais mot de passe !");

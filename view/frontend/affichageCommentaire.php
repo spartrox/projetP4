@@ -54,26 +54,28 @@
 
             <!-- Affichage des commentaires -->
             <?php 
-                while($c = $comments->fetch()){
-                    if (!empty($c['id'])){
-             ?>
 
+                $result = $comments->rowCount();        
+                    if ($result === 0){
+                            echo "<p class='messageErreur'>Il n'y a aucun commentaire pour ce chapitre, soyez le premier à écrire un commentaire :)</p>";
+                    } else{
+                        while($c = $comments->fetch()){
+            ?>
                     <article class="ajoutCommentaire container">    
                         <p><b><?= htmlspecialchars($c['pseudo']) ?></b><i> Ajouté le <?=$c['comment_date_fr'] ?></i></p><hr>
                         <p><?= nl2br(htmlspecialchars($c['contenu'])) ?><br></p>
                     
                     <?php if (!empty($_SESSION)){ ?>
                         <p><a class="signaler" href="index.php?action=reportComment&amp;idPost=<?= $post['id']?>&idComment=<?= $c['id']?>" onclick="return(confirm('Etes vous sur de vouloir signaler ce commentaire ? '))"><i class="fas fa-exclamation-triangle"></i>Signaler</a></p>                
-                    <?php } ?>
+                    <?php } else {
+                    }?>
                     </article>    
             
             <?php
-                } else{
-                    echo "<p class='messageErreur'>Il n'y a aucun commentaire pour ce chapitre, soyez le premier à écrire un commentaire :)</p>";
-                }           
+                        }
 
-            }    // Fin de la boucle des autres commentaires
-                $comments->closeCursor();       
+                    }// Fin de la boucle des autres commentaires
+                     $comments->closeCursor();       
             ?> 
 
     <?php $content = ob_get_clean(); ?>

@@ -1,6 +1,6 @@
- <?php
- ob_start();
- session_start();
+<?php
+ob_start();
+session_start();
 
  	//Récupértion des fichiers nécessaire
  	require_once('controller/frontend.php');
