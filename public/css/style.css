@@ -119,7 +119,7 @@ button a,button a:hover {
 	text-align: center;
 }
 .email{
-	margin-right: -12px;
+	padding-left: 12px;
 }
 .mdp{
 	margin-left: -47px;
@@ -305,7 +305,7 @@ footer{
 	}
 	.email{
 		margin-top: 5px;
-		margin-right: 0px;
+		margin-right: 12px;
 	}
 	.mdp{
 		margin-top: 5px;
@@ -336,7 +336,7 @@ footer{
 	}
 	.email{
 		margin-top: 5px;
-		margin-right: 0px;
+		margin-right: 12px;
 	}
 	.mdp{
 		margin-top: 5px;
